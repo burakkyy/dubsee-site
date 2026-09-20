@@ -3,38 +3,133 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DubSee</title>
+    <title>DubSee — Hear YouTube in your language</title>
     <meta
       name="description"
-      content="DubSee — Hear YouTube in your language. Privacy, terms, and support."
+      content="Share a YouTube video to DubSee for on-device dubbing and captions. No account required."
+    />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="app-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="wrap">
-      <header class="top">
-        <a class="brand" href="index.html">
-          <span class="mark">D</span>
-          <span>DUBSEE</span>
-        </a>
-        <nav class="nav">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="support.html">Support</a>
-        </nav>
-      </header>
+    <div class="atmosphere" aria-hidden="true"></div>
 
-      <section class="hero">
-        <h1>Hear YouTube in your language</h1>
-        <p>
-          Share a video to DubSee for natural offline dubbing and captions. No
-          account required — videos stay on your device.
-        </p>
+    <header class="top wrap-x">
+      <a class="brand" href="index.html" aria-label="DubSee home">
+        <img class="brand-logo" src="logo.png" width="40" height="40" alt="" />
+        <span class="brand-word">DUBSEE</span>
+      </a>
+      <nav class="nav">
+        <a href="#how">How it works</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero wrap-x">
+        <div class="hero-copy">
+          <img
+            class="hero-mark"
+            src="logo.png"
+            width="88"
+            height="88"
+            alt="DubSee"
+          />
+          <p class="hero-brand">DUBSEE</p>
+          <h1>Hear YouTube in your language</h1>
+          <p class="hero-lead">
+            Share a video to DubSee for natural on-device dubbing and captions.
+            No account — videos stay on your phone.
+          </p>
+          <div class="hero-cta">
+            <a class="btn-primary" href="#how">See how it works</a>
+            <a class="btn-ghost" href="support.html">Support</a>
+          </div>
+        </div>
+
+        <div class="hero-stage" aria-hidden="true">
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="app-bar">
+                <img src="app-icon.png" width="28" height="28" alt="" />
+                <span>DubSee</span>
+              </div>
+              <div class="app-field">
+                <span class="app-field-label">YouTube link</span>
+                <span class="app-field-value">youtube.com/watch?v=…</span>
+              </div>
+              <div class="app-video">
+                <div class="app-play"></div>
+                <div class="app-caption">
+                  <span class="cap-dot"></span>
+                  <span>Merhaba — bu videoyu kendi dilinde dinliyorsun.</span>
+                </div>
+              </div>
+              <div class="app-row">
+                <span class="chip">TR · Ses</span>
+                <span class="chip soft">Altyazı açık</span>
+              </div>
+              <div class="app-wave">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <div class="card">
+      <section class="how wrap-x" id="how">
+        <h2>How it works</h2>
+        <p class="section-lead">
+          Same flow as in the app — paste or share, then listen.
+        </p>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <div>
+              <h3>Share or paste a link</h3>
+              <p>
+                From YouTube’s share sheet, or paste a URL on the Link tab.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div>
+              <h3>Captions become speech</h3>
+              <p>
+                DubSee reads captions, translates them, and speaks them on your
+                device.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div>
+              <h3>Watch with dubbing</h3>
+              <p>
+                Video plays with dubbed audio and captions in your language —
+                offline-friendly, no login.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="legal wrap-x" id="legal">
         <h2>Legal &amp; help</h2>
-        <p>Pages required for App Store / Play listing and in-app links.</p>
+        <p class="section-lead">
+          Pages used for App Store / Play listing and in-app links.
+        </p>
         <div class="links">
           <a href="privacy.html"
             >Privacy Policy <span>How we handle data on your device</span></a
@@ -46,12 +141,20 @@
             >Support <span>Help, feedback, and contact</span></a
           >
         </div>
-      </div>
+      </section>
+    </main>
 
-      <footer class="foot">
-        <p>© <span id="y"></span> DubSee. Not affiliated with YouTube or Google.</p>
-      </footer>
-    </div>
+    <footer class="foot wrap-x">
+      <nav>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p>
+        © <span id="y"></span> DubSee. Not affiliated with YouTube or Google.
+      </p>
+    </footer>
+
     <script>
       document.getElementById("y").textContent = new Date().getFullYear()
     </script>
