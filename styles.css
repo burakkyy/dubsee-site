@@ -386,11 +386,13 @@ a:hover {
 
 /* —— Sections —— */
 .how,
+.plans,
 .legal {
   padding: 28px 0 12px;
 }
 
 .how h2,
+.plans h2,
 .legal h2,
 article h1 {
   margin: 0 0 8px;
@@ -446,6 +448,64 @@ article h1 {
   margin: 0;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.plan-card {
+  margin: 0;
+  padding: 20px 18px 8px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid var(--line);
+}
+
+.plan-card-pro {
+  background: linear-gradient(160deg, #0246c9, #1a6bff);
+  border-color: transparent;
+  color: #fff;
+}
+
+.plan-kicker {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.plan-card-pro .plan-kicker {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.plan-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.plan-card ul {
+  margin: 0;
+  padding: 0 0 10px 1.1rem;
+}
+
+.plan-card li {
+  margin: 0 0 6px;
+}
+
+.plan-card-pro li {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+@media (max-width: 720px) {
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .links {
