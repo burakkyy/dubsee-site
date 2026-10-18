@@ -25,3 +25,4 @@
 @media(max-width:620px){.hero-phone{width:240px}.hero-art{min-height:555px}}
 
 h1,h2,h3{overflow-wrap:anywhere}.float-card{max-width:260px}.story-copy .eyebrow{display:none}.story-copy h3{margin-top:0}
+.section.listen{padding-block:36px 12px}.listen .section-heading{font-size:clamp(28px,3.4vw,42px)}.listen .section-sub{font-size:16px;max-width:680px}

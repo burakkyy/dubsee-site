@@ -9,6 +9,7 @@ from xml.sax.saxutils import escape as xml
 from locales import translations
 from extras import EXTRAS
 from taglines import TAGLINES
+from search_copy import SEARCH
 from legal_pages import render_legal
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,7 +20,7 @@ if STORE and not STORE.startswith('https://apps.apple.com/'):
     raise ValueError('app_store_url must be empty or an https://apps.apple.com/ URL')
 LOCALES = translations()
 HREFLANG = {c:c for c in LOCALES}
-assert set(LOCALES) == set(EXTRAS)
+assert set(LOCALES) == set(EXTRAS) == set(SEARCH)
 assert set(LOCALES) == set(json.loads((ROOT / "scripts/supported-languages.json").read_text())["languages"])
 
 PATHS = {
@@ -80,16 +81,16 @@ def render(code):
     def language_current(c):
         return ' aria-current="page"' if c == code else ""
     language_links = ''.join(f'<a class="language-option" data-code="{c}" lang="{c}" hreflang="{HREFLANG[c]}" href="{prefix}{language_href(c)}"{language_current(c)}>{esc(v["native"])}</a>' for c,v in LOCALES.items())
-    title = f'DUBSEE — {TAGLINES[code]} | YouTube · iPhone'
-    if code == 'en': title = 'DUBSEE — YouTube Dubbing for iPhone in 30+ Languages'
-    if code == 'tr': title = 'DUBSEE — YouTube Anlık Dublaj | iPhone · 30+ Dil'
+    search = SEARCH[code]
+    title = search['title']
+    summary = search['description']
     schema = {
       '@context': 'https://schema.org', '@graph': [
         {'@type':'Organization','@id':BASE+'/#organization','name':'DUBSEE','url':BASE+'/', 'logo':BASE+'/assets/app-icon.png','email':CONFIG['support_email']},
         {'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'DUBSEE','inLanguage':list(LOCALES),'publisher':{'@id':BASE+'/#organization'}},
-        {'@type':'WebPage','@id':url(code)+'#webpage','url':url(code),'name':title,'description':t['lead'],'inLanguage':code,'isPartOf':{'@id':BASE+'/#website'},'about':{'@id':BASE+'/#app'},'mainEntity':{'@id':BASE+'/#app'}},
+        {'@type':'WebPage','@id':url(code)+'#webpage','url':url(code),'name':title,'description':summary,'inLanguage':code,'isPartOf':{'@id':BASE+'/#website'},'about':{'@id':BASE+'/#app'},'mainEntity':{'@id':BASE+'/#app'}},
         {'@type':'SoftwareApplication','@id':BASE+'/#app','name':'DUBSEE','applicationCategory':'MultimediaApplication','operatingSystem':'iOS','publisher':{'@id':BASE+'/#organization'},'url':BASE+'/','image':BASE+'/assets/app-icon.png','description':t['lead'], 'featureList':[t['realtime'], '30+ '+t['languages'],'10 '+t['voices'],t['backgroundbody'],t['boostbody'],t['librarybody'],t['unlimited'],t['adfree']], **({'installUrl':STORE} if STORE else {})},
-        {'@type':'FAQPage','@id':url(code)+'#faq','inLanguage':code,'mainEntity':[{'@type':'Question','name':t[q],'acceptedAnswer':{'@type':'Answer','text':t[a]}} for q,a in [('compatible','compatiblebody'),('free','freebody')]]}
+        {'@type':'FAQPage','@id':url(code)+'#faq','inLanguage':code,'mainEntity':[{'@type':'Question','name':search['question'],'acceptedAnswer':{'@type':'Answer','text':search['answer']}}]+[{'@type':'Question','name':t[q],'acceptedAnswer':{'@type':'Answer','text':t[a]}} for q,a in [('compatible','compatiblebody'),('free','freebody')]]}
       ]
     }
     steps = ''.join(f'<li><span class="step-icon">{icon(ic)}</span><span class="step-index">0{i}</span><h3>{s("step"+str(i))}</h3><p>{s("step"+str(i)+"body")}</p></li>' for i,ic in [(1,'link'),(2,'globe'),(3,'play')])
@@ -97,21 +98,21 @@ def render(code):
         dots = ''.join(f'<button type="button" class="carousel-dot" data-carousel-target="{target}" data-slide="{i}" aria-label="{esc(label)} {i+1} / {count}" aria-pressed="{str(i==0).lower()}"></button>' for i in range(count))
         return f'<div class="carousel-controls" data-controls="{target}"><button type="button" class="round-button" data-carousel-target="{target}" data-direction="-1" aria-label="{esc(label)} −1">{icon("left")}</button><div class="carousel-state"><div class="carousel-dots">{dots}</div><span class="carousel-count" data-carousel-count aria-live="polite">1 / {count}</span></div><button type="button" class="round-button" data-carousel-target="{target}" data-direction="1" aria-label="{esc(label)} +1">{icon("right")}</button></div>'
     gallery = ''.join(f'<figure>{picture(prefix,n,t[label])}<figcaption>{s(label)}</figcaption></figure>' for n,label in [('home','step3'),('open','step1'),('player','boost'),('languages','step2')])
-    faq = ''.join(f'<details class="faq-item" {"open" if i==0 else ""}><summary>{s(q)}</summary><p>{s(a)}</p></details>' for i,(q,a) in enumerate([('compatible','compatiblebody'),('free','freebody')]))
+    faq = f'<details class="faq-item" open><summary>{esc(search["question"])}</summary><p>{esc(search["answer"])}</p></details>' + ''.join(f'<details class="faq-item"><summary>{s(q)}</summary><p>{s(a)}</p></details>' for q,a in [('compatible','compatiblebody'),('free','freebody')])
     legal = ''.join(f'<a href="{file}.html">{s(k)} </a>' for k,file in [('privacy','privacy'),('terms','terms'),('support','support')])
     schema_json = json.dumps(schema,ensure_ascii=False).replace('<','\\u003c')
     return f'''<!doctype html>
 <html lang="{code}" dir="{'rtl' if code=='ar' else 'ltr'}">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{esc(title)}</title><meta name="description" content="{s('lead')}">
+<title>{esc(title)}</title><meta name="description" content="{esc(summary)}">
 {('<meta name="google-site-verification" content="'+esc(CONFIG.get('google_site_verification',''),quote=True)+'">') if CONFIG.get('google_site_verification') else ''}
 <meta name="theme-color" content="#ffffff"><meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="{url(code)}">
 {alternates}<link rel="alternate" hreflang="x-default" href="{BASE}/">
 <link rel="icon" href="{prefix}assets/app-icon.png" type="image/png"><link rel="apple-touch-icon" href="{prefix}assets/app-icon.png">
-<meta property="og:type" content="website"><meta property="og:site_name" content="DUBSEE"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{s('lead')}"><meta property="og:url" content="{url(code)}"><meta property="og:image" content="{BASE}/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="800"><meta property="og:image:alt" content="{s('lead')}">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{s('lead')}"><meta name="twitter:image" content="{BASE}/assets/og.jpg">
+<meta property="og:type" content="website"><meta property="og:site_name" content="DUBSEE"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary)}"><meta property="og:url" content="{url(code)}"><meta property="og:image" content="{BASE}/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="800"><meta property="og:image:alt" content="{esc(summary)}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(summary)}"><meta name="twitter:image" content="{BASE}/assets/og.jpg">
 <script data-auto-language>
 (() => {{
   if (!['https:','http:'].includes(location.protocol)) return;
@@ -140,6 +141,7 @@ def render(code):
 <section class="hero"><div class="wrap"><div class="hero-main"><div class="hero-copy"><div class="hero-kicker"><span>{s('badge')}</span></div><h1>{s('title')} <span>{s('accent')}</span></h1><p class="hero-lead">{s('lead')}</p><div class="cta-row">{cta()}<a class="text-link" href="#how">{s('how')}{icon('arrow')}</a></div><div class="hero-proof"><span>{icon('check')}30+ {s('languages')}</span><span>{icon('check')}10 {s('voices')}</span></div></div>
 <div class="hero-art"><span class="halo" aria-hidden="true"></span><div class="hero-phone">{picture(prefix,'home',t['gallery'],eager=True)}</div><div class="float-card language-chip" aria-hidden="true"><span class="chip-icon">{icon('globe')}</span><div><strong>30+ {s('languages')}</strong><small>English · Türkçe · 日本語</small></div></div><div class="float-card audio-chip" aria-hidden="true"><div class="audio-label">{icon('wave')}{s('realtime')}</div>{wave()}</div></div></div>
 <div class="metrics"><div class="metric"><strong>30+</strong><span>{s('languages')}</span></div><div class="metric"><strong>10</strong><span>{s('voices')}</span></div><div class="metric">{icon('wave')}<span>{s('realtime')}</span></div></div></div></section>
+<section class="section listen wrap" id="listen" lang="{code}"><p class="eyebrow">YouTube · {esc(t['native'])}</p><h2 class="section-heading">{esc(search['heading'])}</h2><p class="section-sub">{esc(summary)}</p></section>
 <section class="section wrap" id="how"><div class="how-heading"><div><p class="eyebrow">DUBSEE / 01</p><h2 class="section-heading">{s('how')}</h2></div><span class="brand-stamp"><img src="{prefix}assets/app-icon.png" alt="" width="32" height="32"></span></div><ol class="steps">{steps}</ol></section>
 <section class="section life"><div class="wrap"><div class="life-heading"><div><p class="eyebrow">DUBSEE / 02</p><h2 class="section-heading">{s('life')}</h2></div></div><div class="stories" id="story-track" data-carousel tabindex="0" role="region" aria-label="{s('life')}"><article class="story study">{picture(prefix,'study',t['studybody'])}<div class="story-copy"><p class="eyebrow">01 / {s('study')}</p><h3>{s('study')}</h3><p>{s('studybody')}</p></div></article><article class="story craft">{picture(prefix,'craft',t['craftbody'])}<div class="story-copy"><p class="eyebrow">02 / {s('craft')}</p><h3>{s('craft')}</h3><p>{s('craftbody')}</p></div></article></div>{controls("story-track",2,t["life"])}</div></section>
 <section class="section features wrap" id="features"><p class="eyebrow">DUBSEE / 03</p><h2 class="section-heading">{s('features')}<span class="blue">.</span></h2><div class="feature-tags"><span>{icon('infinity')}{s('unlimited')}</span><span>{icon('wave')}10 {s('voices')}</span><span>{icon('shield')}{s('adfree')}</span><span>{icon('globe')}30+ {s('languages')}</span></div><div class="feature-grid" id="feature-track" data-carousel tabindex="0" role="region" aria-label="{s('features')}"><article class="feature-card blue-card">{icon('headphones')}<h3>{s('background')}</h3><p>{s('backgroundbody')}</p><div class="mini-player" aria-hidden="true"><img src="{prefix}assets/app-icon.png" alt="" width="35" height="35">{wave()}{icon('play')}</div></article><article class="feature-card">{icon('volume')}<h3>{s('boost')}</h3><p>{s('boostbody')}</p><div class="boost-ui" aria-hidden="true"><div class="boost-label">{icon('volume')}<span>+6 dB</span></div><div class="slider-art"></div></div></article><article class="feature-card">{icon('book')}<h3>{s('library')}</h3><p>{s('librarybody')}</p><div class="library-art" aria-hidden="true"><span>{icon('play')}</span><span>{icon('book')}</span><span>{icon('link')}</span></div></article></div>{controls("feature-track",3,t["features"])}<p class="feature-note">{s('freebody')}</p></section>
