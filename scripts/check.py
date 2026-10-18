@@ -6,8 +6,8 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
-from build import ROOT, BASE, LOCALES, HREFLANG, url
-from search_copy import SEARCH
+from build import ROOT, BASE, CONFIG, LOCALES, HREFLANG, STORE, url
+from search_copy import ABOUT, SEARCH
 
 class Page(HTMLParser):
     def __init__(self,text):
@@ -51,8 +51,11 @@ def check():
         require(alts==({HREFLANG[c]:url(c) for c in LOCALES}|{'x-default':BASE+'/'}),f'{code}: hreflang')
         schema=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',text).group(1))
         require(len(schema['@graph'])==5,f'{code}: structured data')
-        visible=set(LOCALES[code].values())|{SEARCH[code]['question'],SEARCH[code]['answer']}
+        visible=set(LOCALES[code].values())|{SEARCH[code]['question'],SEARCH[code]['answer'],ABOUT[code]['q'],ABOUT[code]['a']}
         require(all(q['name'] in visible and q['acceptedAnswer']['text'] in visible for q in schema['@graph'][-1]['mainEntity']),f'{code}: visible FAQ agreement')
+        app=next(node for node in schema['@graph'] if node['@type']=='SoftwareApplication')
+        require(app['description']==ABOUT[code]['a'] and app['isAccessibleForFree'] is True, f'{code}: application facts')
+        require(app.get('installUrl')==STORE if STORE else 'installUrl' not in app, f'{code}: store link')
         require(f'<h2 class="section-heading">{SEARCH[code]["heading"]}</h2>' in text,f'{code}: language search heading')
         require(f'<title>{SEARCH[code]["title"]}</title>' in text,f'{code}: search title')
         require('95%' not in text and '%95' not in text,f'{code}: unverified statistic')
@@ -88,13 +91,21 @@ def check():
         canonical=[a['href'] for tag,a in Page(file.read_text()).tags if tag=='link' and a.get('rel')=='canonical']
         require(canonical==[address],f'sitemap contains a noncanonical URL: {address}')
 
-    require(set(SEARCH)==set(LOCALES),'search copy covers every language')
+    require(set(SEARCH)==set(ABOUT)==set(LOCALES),'search copy covers every language')
     for field in ('title','heading','description','question','answer'):
         values=[SEARCH[code][field] for code in LOCALES]
         require(len(values)==len(set(values)),f'search {field} values are unique')
         require(all(values),f'search {field} is present')
+    for field in ('q','a'):
+        values=[ABOUT[code][field] for code in LOCALES]
+        require(len(values)==len(set(values)),f'about {field} values are unique')
+        require(all(len(value)>=80 for value in values) if field=='a' else all(values),f'about {field} is present')
     require(all(len(SEARCH[code]['title'])<=70 for code in LOCALES),'search titles stay within 70 characters')
     require(all(60<=len(SEARCH[code]['description'])<=180 for code in LOCALES),'search descriptions stay within 60–180 characters')
+    facts=(ROOT/'llms.txt').read_text()
+    require(ABOUT['en']['a'] in facts and CONFIG['support_email'] in facts,'llms facts')
+    require(all(url(code) in facts and ABOUT[code]['a'] in facts for code in LOCALES),'llms language pages')
+    require('apps.apple.com' not in facts and '95%' not in facts,'llms stays factual')
     if failures:raise SystemExit('\n'.join(failures))
     print(f'PASS: {len(files)} HTML files; {len(LOCALES)} localized landing pages; {checked_links} local resource/anchor references; canonical/hreflang; JSON-LD; sitemap; RTL; legal content preservation.')
     print('Browser rendering, screen-reader testing and Lighthouse measurements were not performed.')

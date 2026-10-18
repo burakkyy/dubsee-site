@@ -9,7 +9,7 @@ from xml.sax.saxutils import escape as xml
 from locales import translations
 from extras import EXTRAS
 from taglines import TAGLINES
-from search_copy import SEARCH
+from search_copy import ABOUT, SEARCH
 from legal_pages import render_legal
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,7 +20,7 @@ if STORE and not STORE.startswith('https://apps.apple.com/'):
     raise ValueError('app_store_url must be empty or an https://apps.apple.com/ URL')
 LOCALES = translations()
 HREFLANG = {c:c for c in LOCALES}
-assert set(LOCALES) == set(EXTRAS) == set(SEARCH)
+assert set(LOCALES) == set(EXTRAS) == set(SEARCH) == set(ABOUT)
 assert set(LOCALES) == set(json.loads((ROOT / "scripts/supported-languages.json").read_text())["languages"])
 
 PATHS = {
@@ -82,15 +82,16 @@ def render(code):
         return ' aria-current="page"' if c == code else ""
     language_links = ''.join(f'<a class="language-option" data-code="{c}" lang="{c}" hreflang="{HREFLANG[c]}" href="{prefix}{language_href(c)}"{language_current(c)}>{esc(v["native"])}</a>' for c,v in LOCALES.items())
     search = SEARCH[code]
+    about = ABOUT[code]
     title = search['title']
     summary = search['description']
     schema = {
       '@context': 'https://schema.org', '@graph': [
-        {'@type':'Organization','@id':BASE+'/#organization','name':'DUBSEE','url':BASE+'/', 'logo':BASE+'/assets/app-icon.png','email':CONFIG['support_email']},
+        {'@type':'Organization','@id':BASE+'/#organization','name':'DUBSEE','alternateName':'DubSee','url':BASE+'/','logo':BASE+'/assets/app-icon.png','email':CONFIG['support_email'],'description':about['a']},
         {'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'DUBSEE','inLanguage':list(LOCALES),'publisher':{'@id':BASE+'/#organization'}},
         {'@type':'WebPage','@id':url(code)+'#webpage','url':url(code),'name':title,'description':summary,'inLanguage':code,'isPartOf':{'@id':BASE+'/#website'},'about':{'@id':BASE+'/#app'},'mainEntity':{'@id':BASE+'/#app'}},
-        {'@type':'SoftwareApplication','@id':BASE+'/#app','name':'DUBSEE','applicationCategory':'MultimediaApplication','operatingSystem':'iOS','publisher':{'@id':BASE+'/#organization'},'url':BASE+'/','image':BASE+'/assets/app-icon.png','description':t['lead'], 'featureList':[t['realtime'], '30+ '+t['languages'],'10 '+t['voices'],t['backgroundbody'],t['boostbody'],t['librarybody'],t['unlimited'],t['adfree']], **({'installUrl':STORE} if STORE else {})},
-        {'@type':'FAQPage','@id':url(code)+'#faq','inLanguage':code,'mainEntity':[{'@type':'Question','name':search['question'],'acceptedAnswer':{'@type':'Answer','text':search['answer']}}]+[{'@type':'Question','name':t[q],'acceptedAnswer':{'@type':'Answer','text':t[a]}} for q,a in [('compatible','compatiblebody'),('free','freebody')]]}
+        {'@type':'SoftwareApplication','@id':BASE+'/#app','name':'DUBSEE','alternateName':'DubSee','applicationCategory':'MultimediaApplication','operatingSystem':'iOS','isAccessibleForFree':True,'inLanguage':list(LOCALES),'publisher':{'@id':BASE+'/#organization'},'url':BASE+'/','image':BASE+'/assets/app-icon.png','description':about['a'],'featureList':[t['realtime'], '30+ '+t['languages'],'10 '+t['voices'],t['backgroundbody'],t['boostbody'],t['librarybody'],t['unlimited'],t['adfree']], **({'installUrl':STORE} if STORE else {})},
+        {'@type':'FAQPage','@id':url(code)+'#faq','inLanguage':code,'mainEntity':[{'@type':'Question','name':item['q'],'acceptedAnswer':{'@type':'Answer','text':item['a']}} for item in (about, {'q':search['question'],'a':search['answer']})]+[{'@type':'Question','name':t[q],'acceptedAnswer':{'@type':'Answer','text':t[a]}} for q,a in [('compatible','compatiblebody'),('free','freebody')]]}
       ]
     }
     steps = ''.join(f'<li><span class="step-icon">{icon(ic)}</span><span class="step-index">0{i}</span><h3>{s("step"+str(i))}</h3><p>{s("step"+str(i)+"body")}</p></li>' for i,ic in [(1,'link'),(2,'globe'),(3,'play')])
@@ -98,7 +99,7 @@ def render(code):
         dots = ''.join(f'<button type="button" class="carousel-dot" data-carousel-target="{target}" data-slide="{i}" aria-label="{esc(label)} {i+1} / {count}" aria-pressed="{str(i==0).lower()}"></button>' for i in range(count))
         return f'<div class="carousel-controls" data-controls="{target}"><button type="button" class="round-button" data-carousel-target="{target}" data-direction="-1" aria-label="{esc(label)} −1">{icon("left")}</button><div class="carousel-state"><div class="carousel-dots">{dots}</div><span class="carousel-count" data-carousel-count aria-live="polite">1 / {count}</span></div><button type="button" class="round-button" data-carousel-target="{target}" data-direction="1" aria-label="{esc(label)} +1">{icon("right")}</button></div>'
     gallery = ''.join(f'<figure>{picture(prefix,n,t[label])}<figcaption>{s(label)}</figcaption></figure>' for n,label in [('home','step3'),('open','step1'),('player','boost'),('languages','step2')])
-    faq = f'<details class="faq-item" open><summary>{esc(search["question"])}</summary><p>{esc(search["answer"])}</p></details>' + ''.join(f'<details class="faq-item"><summary>{s(q)}</summary><p>{s(a)}</p></details>' for q,a in [('compatible','compatiblebody'),('free','freebody')])
+    faq = f'<details class="faq-item" open><summary>{esc(about["q"])}</summary><p>{esc(about["a"])}</p></details><details class="faq-item"><summary>{esc(search["question"])}</summary><p>{esc(search["answer"])}</p></details>' + ''.join(f'<details class="faq-item"><summary>{s(q)}</summary><p>{s(a)}</p></details>' for q,a in [('compatible','compatiblebody'),('free','freebody')])
     legal = ''.join(f'<a href="{file}.html">{s(k)} </a>' for k,file in [('privacy','privacy'),('terms','terms'),('support','support')])
     schema_json = json.dumps(schema,ensure_ascii=False).replace('<','\\u003c')
     return f'''<!doctype html>
@@ -108,7 +109,7 @@ def render(code):
 <title>{esc(title)}</title><meta name="description" content="{esc(summary)}">
 {('<meta name="google-site-verification" content="'+esc(CONFIG.get('google_site_verification',''),quote=True)+'">') if CONFIG.get('google_site_verification') else ''}
 <meta name="theme-color" content="#ffffff"><meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="{url(code)}">
+<link rel="canonical" href="{url(code)}"><link rel="describedby" href="{BASE}/llms.txt" type="text/plain">
 {alternates}<link rel="alternate" hreflang="x-default" href="{BASE}/">
 <link rel="icon" href="{prefix}assets/app-icon.png" type="image/png"><link rel="apple-touch-icon" href="{prefix}assets/app-icon.png">
 <meta property="og:type" content="website"><meta property="og:site_name" content="DUBSEE"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary)}"><meta property="og:url" content="{url(code)}"><meta property="og:image" content="{BASE}/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="800"><meta property="og:image:alt" content="{esc(summary)}">
@@ -141,7 +142,7 @@ def render(code):
 <section class="hero"><div class="wrap"><div class="hero-main"><div class="hero-copy"><div class="hero-kicker"><span>{s('badge')}</span></div><h1>{s('title')} <span>{s('accent')}</span></h1><p class="hero-lead">{s('lead')}</p><div class="cta-row">{cta()}<a class="text-link" href="#how">{s('how')}{icon('arrow')}</a></div><div class="hero-proof"><span>{icon('check')}30+ {s('languages')}</span><span>{icon('check')}10 {s('voices')}</span></div></div>
 <div class="hero-art"><span class="halo" aria-hidden="true"></span><div class="hero-phone">{picture(prefix,'home',t['gallery'],eager=True)}</div><div class="float-card language-chip" aria-hidden="true"><span class="chip-icon">{icon('globe')}</span><div><strong>30+ {s('languages')}</strong><small>English · Türkçe · 日本語</small></div></div><div class="float-card audio-chip" aria-hidden="true"><div class="audio-label">{icon('wave')}{s('realtime')}</div>{wave()}</div></div></div>
 <div class="metrics"><div class="metric"><strong>30+</strong><span>{s('languages')}</span></div><div class="metric"><strong>10</strong><span>{s('voices')}</span></div><div class="metric">{icon('wave')}<span>{s('realtime')}</span></div></div></div></section>
-<section class="section listen wrap" id="listen" lang="{code}"><p class="eyebrow">YouTube · {esc(t['native'])}</p><h2 class="section-heading">{esc(search['heading'])}</h2><p class="section-sub">{esc(summary)}</p></section>
+<section class="section listen wrap" id="listen" lang="{code}"><p class="eyebrow">YouTube · {esc(t['native'])}</p><h2 class="section-heading">{esc(search['heading'])}</h2><p class="section-sub">{esc(summary)}</p><p class="section-sub" id="what">{esc(about['a'])}</p></section>
 <section class="section wrap" id="how"><div class="how-heading"><div><p class="eyebrow">DUBSEE / 01</p><h2 class="section-heading">{s('how')}</h2></div><span class="brand-stamp"><img src="{prefix}assets/app-icon.png" alt="" width="32" height="32"></span></div><ol class="steps">{steps}</ol></section>
 <section class="section life"><div class="wrap"><div class="life-heading"><div><p class="eyebrow">DUBSEE / 02</p><h2 class="section-heading">{s('life')}</h2></div></div><div class="stories" id="story-track" data-carousel tabindex="0" role="region" aria-label="{s('life')}"><article class="story study">{picture(prefix,'study',t['studybody'])}<div class="story-copy"><p class="eyebrow">01 / {s('study')}</p><h3>{s('study')}</h3><p>{s('studybody')}</p></div></article><article class="story craft">{picture(prefix,'craft',t['craftbody'])}<div class="story-copy"><p class="eyebrow">02 / {s('craft')}</p><h3>{s('craft')}</h3><p>{s('craftbody')}</p></div></article></div>{controls("story-track",2,t["life"])}</div></section>
 <section class="section features wrap" id="features"><p class="eyebrow">DUBSEE / 03</p><h2 class="section-heading">{s('features')}<span class="blue">.</span></h2><div class="feature-tags"><span>{icon('infinity')}{s('unlimited')}</span><span>{icon('wave')}10 {s('voices')}</span><span>{icon('shield')}{s('adfree')}</span><span>{icon('globe')}30+ {s('languages')}</span></div><div class="feature-grid" id="feature-track" data-carousel tabindex="0" role="region" aria-label="{s('features')}"><article class="feature-card blue-card">{icon('headphones')}<h3>{s('background')}</h3><p>{s('backgroundbody')}</p><div class="mini-player" aria-hidden="true"><img src="{prefix}assets/app-icon.png" alt="" width="35" height="35">{wave()}{icon('play')}</div></article><article class="feature-card">{icon('volume')}<h3>{s('boost')}</h3><p>{s('boostbody')}</p><div class="boost-ui" aria-hidden="true"><div class="boost-label">{icon('volume')}<span>+6 dB</span></div><div class="slider-art"></div></div></article><article class="feature-card">{icon('book')}<h3>{s('library')}</h3><p>{s('librarybody')}</p><div class="library-art" aria-hidden="true"><span>{icon('play')}</span><span>{icon('book')}</span><span>{icon('link')}</span></div></article></div>{controls("feature-track",3,t["features"])}<p class="feature-note">{s('freebody')}</p></section>
@@ -170,7 +171,29 @@ def build():
             entries.append(f'<url><loc>{xml(url(code))}{name}.html</loc></url>')
     (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'+''.join(entries)+'</urlset>')
     (ROOT/'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n')
-    print(f'Built {len(LOCALES)} languages, sitemap.xml and robots.txt.')
+    (ROOT/'llms.txt').write_text(llms_text(), encoding='utf-8')
+    print(f'Built {len(LOCALES)} languages, sitemap.xml, robots.txt and llms.txt.')
+
+def llms_text():
+    pages = '\n'.join(f'- [{LOCALES[code]["native"]}]({url(code)}): {SEARCH[code]["heading"]}' for code in LOCALES)
+    facts = '\n\n'.join(f'### {LOCALES[code]["native"]}\n\n{ABOUT[code]["q"]}\n\n{ABOUT[code]["a"]}' for code in LOCALES)
+    return f'''# DUBSEE
+
+> DUBSEE is an iPhone app that dubs YouTube videos in real time in 30+ languages.
+
+{ABOUT['en']['a']}
+
+Support: {CONFIG['support_email']}
+Official site: {BASE}/
+
+## Language pages
+
+{pages}
+
+## What DUBSEE is, in each language
+
+{facts}
+'''
 
 if __name__ == '__main__':
     build()
