@@ -8,6 +8,7 @@
     cleanups.push(() => target.removeEventListener(type, fn, options));
   };
   const reduced = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const compactMotion = typeof matchMedia === 'function' && matchMedia('(max-width: 980px)').matches;
   window.__dubseeUI = {destroy() { cleanups.splice(0).forEach(fn => fn()); }};
 
   document.querySelectorAll('.language-option').forEach(link => {
@@ -48,7 +49,7 @@
       if (index === current) return;
       const changed = current >= 0;
       current = index;
-      if (changed && !reduced) {
+      if (changed && !reduced && !compactMotion) {
         const visual = cards[index].querySelector?.('picture img, :scope > svg');
         if (visual && typeof visual.animate === 'function') {
           const photo = visual.tagName.toLowerCase() === 'img';
@@ -117,9 +118,15 @@
           observer.unobserve(entry.target);
         });
       }, {threshold:.08,rootMargin:'0px 0px -18px 0px'});
+      const viewportBottom = (window.innerHeight || 0) * 0.92;
       document.querySelectorAll('.section-heading, .steps li, .story, .feature-card, .feature-tags').forEach(element => {
+        if (compactMotion) {
+          if (element.closest('[data-carousel]')) return;
+          const rect = element.getBoundingClientRect();
+          if (rect.top < viewportBottom && rect.bottom > 0) return;
+        }
         const siblings = Array.from(element.parentElement.children);
-        element.style.setProperty('--reveal-delay', (Math.max(0, siblings.indexOf(element)) % 3) * 75 + 'ms');
+        element.style.setProperty('--reveal-delay', (Math.max(0, siblings.indexOf(element)) % 3) * 90 + 'ms');
         element.classList.add('reveal-pending'); observer.observe(element);
         cleanups.push(() => element.classList.remove('reveal-pending','reveal-visible'));
       });
