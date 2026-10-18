@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://burakkyy.github.io/dubsee-site/sitemap.xml

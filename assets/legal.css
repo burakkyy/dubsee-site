@@ -716,3 +716,6 @@ article li + li {
     transition: none !important;
   }
 }
+
+/* Shared light brand treatment; legal text retained. */
+:root{--font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--blue:#0879f9}body{background:white}.atmosphere{display:none}.wrap{max-width:900px}.wrap .top{border-bottom:1px solid #e4eaf1;padding-bottom:26px}article{background:white;box-shadow:none;border:1px solid #e4eaf1}h1{letter-spacing:-.045em}.brand-word{letter-spacing:-.03em}.foot{color:#59677b}

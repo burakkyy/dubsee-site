@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy · DubSee</title>
+    <meta name="description" content="DubSee Privacy Policy" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=20261007" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="index.html" aria-label="DubSee home">
+          <img class="brand-logo" src="logo.png" width="40" height="40" alt="" />
+          <span class="brand-word">DUBSEE</span>
+        </a>
+        <nav class="nav">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </header>
+
+      <article>
+        <h1>Privacy Policy</h1>
+        <p class="meta">Last updated: October 7, 2026</p>
+
+        <p class="lang">English</p>
+
+        <p>
+          DubSee (“we”, “the app”) helps you hear online videos with on-device
+          dubbing in many languages. This policy explains what information is
+          involved when you use the app.
+        </p>
+
+        <h2>1. Accounts</h2>
+        <p>
+          DubSee asks you to sign in with Apple or Google. We receive the name
+          and email address that provider shares (Apple may give a private relay
+          address instead of your real email) and an account identifier. Sign-in
+          is handled by Firebase. We use this to keep your account and your
+          subscription on this device. We do not sell this information.
+        </p>
+
+        <h2>2. Data stored on your device</h2>
+        <p>The app may store on your device:</p>
+        <ul>
+          <li>App settings (language, voice, appearance, volume preferences)</li>
+          <li>Library / history of videos you opened</li>
+          <li>Cached language data and generated dubbing audio</li>
+          <li>Onboarding state</li>
+          <li>How many free videos you have used today</li>
+        </ul>
+        <p>
+          This information stays on your device unless you choose to share it
+          yourself (for example by emailing support).
+        </p>
+
+        <h2>3. Network use</h2>
+        <p>Depending on features you use, the app may:</p>
+        <ul>
+          <li>Load video pages / embeds for content you requested</li>
+          <li>Fetch language data needed for on-device dubbing</li>
+          <li>Download the advanced voice pack when you choose to install it</li>
+          <li>Sign you in and check whether your subscription is active</li>
+          <li>Show a rewarded advertisement when you choose to watch one</li>
+          <li>Send the usage events described below</li>
+          <li>Open external links you tap (privacy, terms, App Store, email)</li>
+        </ul>
+        <p>We do not sell your personal information.</p>
+
+        <h2>4. Advertising</h2>
+        <p>
+          Rewarded ads are provided by Google (AdMob). An ad plays only after
+          you choose to watch one, so you can unlock an extra free video. We
+          request non-personalized ads. Google may receive a device identifier,
+          an approximate location derived from the IP address, advertising and
+          performance data, and crash diagnostics, under
+          <a href="https://policies.google.com/privacy">Google’s privacy policy</a>.
+          We do not use this information to follow you across other companies’
+          apps.
+        </p>
+
+        <h2>5. Purchases</h2>
+        <p>
+          DubSee Pro is an auto-renewable subscription sold through the App
+          Store, as a monthly or yearly plan, with a free trial when the store
+          offers one. Apple processes the payment. We do not receive your full
+          payment card number. Subscription status is read through RevenueCat so
+          the app can unlock Pro on your account.
+        </p>
+
+        <h2>6. Usage analytics</h2>
+        <p>
+          The app sends usage events to Google Analytics: that the app was
+          opened, sign-in, a video identifier for videos you open (not the page
+          address), languages, playback, and whether a rewarded ad finished.
+          Events can include a random identifier stored on the device and, when
+          you are signed in, your account identifier. They do not include your
+          email, name, or payment card.
+        </p>
+
+        <h2>7. Contact</h2>
+        <p>
+          Questions about privacy:
+          <a href="mailto:dubsee.app@gmail.com">dubsee.app@gmail.com</a>
+        </p>
+
+        <h2>8. Changes</h2>
+        <p>
+          We may update this policy. The “Last updated” date at the top will
+          change when we do.
+        </p>
+
+        <p class="lang">Türkçe</p>
+
+        <p>
+          DubSee, çevrimiçi videoları cihazınızda birçok dilde dublajla
+          dinlemenize yardımcı olan bir uygulamadır. Bu metin, uygulamayı
+          kullanırken hangi bilgilerin söz konusu olduğunu açıklar.
+        </p>
+
+        <h2>1. Hesaplar</h2>
+        <p>
+          DubSee, Apple veya Google ile giriş ister. Bu sağlayıcının paylaştığı
+          adı ve e-posta adresini (Apple gerçek adresiniz yerine gizli bir
+          yönlendirme adresi verebilir) ve bir hesap kimliğini alırız. Giriş
+          Firebase üzerinden yapılır. Bu bilgi, hesabınızı ve aboneliğinizi bu
+          cihazda tutmak için kullanılır. Bu bilgiyi satmayız.
+        </p>
+
+        <h2>2. Cihazınızda tutulan veriler</h2>
+        <ul>
+          <li>Uygulama ayarları (dil, ses, görünüm, ses seviyesi)</li>
+          <li>Açtığınız videoların kütüphane / geçmiş kayıtları</li>
+          <li>Önbelleğe alınan dil verisi ve üretilen dublaj sesi</li>
+          <li>Karşılama durumu</li>
+          <li>Bugün kaç ücretsiz video kullandığınız</li>
+        </ul>
+        <p>
+          Bu bilgiler siz paylaşmadıkça (ör. destek e-postası) cihazınızda
+          kalır.
+        </p>
+
+        <h2>3. Ağ kullanımı</h2>
+        <ul>
+          <li>İstediğiniz video içeriğini oynatmak</li>
+          <li>Cihaz içi dublaj için gereken dil verisini almak</li>
+          <li>İsteğe bağlı olarak gelişmiş ses paketini indirmek</li>
+          <li>Giriş yapmak ve aboneliğin açık olup olmadığına bakmak</li>
+          <li>Siz izlemeyi seçtiğinizde ödüllü reklam göstermek</li>
+          <li>Aşağıda anlatılan kullanım olaylarını göndermek</li>
+          <li>Tıkladığınız dış bağlantıları açmak</li>
+        </ul>
+        <p>Kişisel verilerinizi satmayız.</p>
+
+        <h2>4. Reklam</h2>
+        <p>
+          Ödüllü reklamları Google (AdMob) gösterir. Reklam, yalnızca ekstra bir
+          ücretsiz video açmak için izlemeyi seçtiğinizde oynar. Kişiselleştirilmemiş
+          reklam isteriz. Google, kendi
+          <a href="https://policies.google.com/privacy">gizlilik politikası</a>
+          kapsamında cihaz kimliği, IP adresinden çıkarılan yaklaşık konum,
+          reklam ve performans verisi ile çökme tanısı alabilir. Bu bilgiyi,
+          sizi başka şirketlerin uygulamaları arasında takip etmek için
+          kullanmayız.
+        </p>
+
+        <h2>5. Satın almalar</h2>
+        <p>
+          DubSee Pro, App Store üzerinden satılan, aylık veya yıllık otomatik
+          yenilenen bir aboneliktir. Mağaza deneme süresi sunuyorsa o süre de
+          geçerlidir. Ödemeyi Apple işler. Kart numaranızın tamamını biz
+          almayız. Aboneliğin açık olup olmadığı RevenueCat üzerinden okunur;
+          böylece Pro, hesabınızda açılır.
+        </p>
+
+        <h2>6. Kullanım ölçümü</h2>
+        <p>
+          Uygulama, Google Analytics’e kullanım olayları gönderir: uygulamanın
+          açılması, giriş, açtığınız videonun kimliği (sayfa adresi değil),
+          diller, oynatma ve ödüllü reklamın bitip bitmediği. Olaylarda cihazda
+          tutulan rastgele bir kimlik ve giriş yaptıysanız hesap kimliğiniz
+          bulunabilir. E-posta, ad ve kart bilgisi gönderilmez.
+        </p>
+
+        <h2>7. İletişim</h2>
+        <p>
+          Gizlilik soruları:
+          <a href="mailto:dubsee.app@gmail.com">dubsee.app@gmail.com</a>
+        </p>
+      </article>
+
+      <footer class="foot">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="terms.html">Terms</a>
+          <a href="support.html">Support</a>
+        </nav>
+        <p>© DubSee. Independent utility — not affiliated with third-party video platforms.</p>
+      </footer>
+    </div>
+  </body>
+</html>
