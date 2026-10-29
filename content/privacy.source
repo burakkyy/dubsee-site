@@ -31,7 +31,7 @@
 
       <article>
         <h1>Privacy Policy</h1>
-        <p class="meta">Last updated: October 7, 2026</p>
+        <p class="meta">Last updated: October 29, 2026</p>
 
         <p class="lang">English</p>
 
@@ -43,11 +43,12 @@
 
         <h2>1. Accounts</h2>
         <p>
-          DubSee asks you to sign in with Apple or Google. We receive the name
-          and email address that provider shares (Apple may give a private relay
-          address instead of your real email) and an account identifier. Sign-in
-          is handled by Firebase. We use this to keep your account and your
-          subscription on this device. We do not sell this information.
+          You can use DubSee without an account. Signing in with Apple or Google
+          is optional and used to keep your subscription tied to your account
+          across restores. When you sign in, we receive the name and email
+          address that provider shares (Apple may give a private relay address
+          instead of your real email) and an account identifier. Sign-in is
+          handled by Firebase. We do not sell this information.
         </p>
 
         <h2>2. Data stored on your device</h2>
@@ -130,11 +131,12 @@
 
         <h2>1. Hesaplar</h2>
         <p>
-          DubSee, Apple veya Google ile giriş ister. Bu sağlayıcının paylaştığı
-          adı ve e-posta adresini (Apple gerçek adresiniz yerine gizli bir
-          yönlendirme adresi verebilir) ve bir hesap kimliğini alırız. Giriş
-          Firebase üzerinden yapılır. Bu bilgi, hesabınızı ve aboneliğinizi bu
-          cihazda tutmak için kullanılır. Bu bilgiyi satmayız.
+          DubSee’yi hesapsız kullanabilirsiniz. Apple veya Google ile giriş
+          isteğe bağlıdır; aboneliğinizi hesabınıza bağlamak için kullanılır.
+          Giriş yaptığınızda, sağlayıcının paylaştığı adı ve e-posta adresini
+          (Apple gerçek adresiniz yerine gizli bir yönlendirme adresi verebilir)
+          ve bir hesap kimliğini alırız. Giriş Firebase üzerinden yapılır. Bu
+          bilgiyi satmayız.
         </p>
 
         <h2>2. Cihazınızda tutulan veriler</h2>
