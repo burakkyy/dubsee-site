@@ -154,22 +154,30 @@ def build():
             (dest/(name+'.html')).write_text(render_legal(ROOT,name,code,page,LOCALES,BASE),encoding='utf-8')
     icons = {'apple': icon('apple'), 'globe': icon('globe'), 'menu': icon('menu')}
     guide_pairs = write_guides(ROOT, LOCALES, BASE, STORE, CONFIG['support_email'], icons, date.today().year)
+    def alternate_links(pairs):
+        return ''.join(f'    <xhtml:link rel="alternate" hreflang="{lang}" href="{xml(href)}"/>\n' for lang, href in pairs)
+    def url_block(loc, pairs=()):
+        body = f'  <url>\n    <loc>{xml(loc)}</loc>\n'
+        if pairs:
+            body += alternate_links(pairs)
+        return body + '  </url>'
     entries = []
     for c in LOCALES:
-        links = ''.join(f'<xhtml:link rel="alternate" hreflang="{HREFLANG[a]}" href="{xml(url(a))}"/>' for a in LOCALES)
-        entries.append(f'<url><loc>{xml(url(c))}</loc>{links}<xhtml:link rel="alternate" hreflang="x-default" href="{xml(BASE)}/"/></url>')
+        pairs = [(HREFLANG[a], url(a)) for a in LOCALES] + [('x-default', BASE + '/')]
+        entries.append(url_block(url(c), pairs))
     for code in ['en','tr']:
         for name in ['privacy','terms','support']:
-            entries.append(f'<url><loc>{xml(url(code))}{name}.html</loc></url>')
+            entries.append(url_block(url(code) + name + '.html'))
     for en_url, tr_url in guide_pairs:
-        links = (
-            f'<xhtml:link rel="alternate" hreflang="en" href="{xml(en_url)}"/>'
-            f'<xhtml:link rel="alternate" hreflang="tr" href="{xml(tr_url)}"/>'
-            f'<xhtml:link rel="alternate" hreflang="x-default" href="{xml(en_url)}"/>'
-        )
-        entries.append(f'<url><loc>{xml(en_url)}</loc>{links}</url>')
-        entries.append(f'<url><loc>{xml(tr_url)}</loc>{links}</url>')
-    (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'+''.join(entries)+'</urlset>', encoding='utf-8')
+        pairs = [('en', en_url), ('tr', tr_url), ('x-default', en_url)]
+        entries.append(url_block(en_url, pairs))
+        entries.append(url_block(tr_url, pairs))
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+        + '\n'.join(entries) + '\n</urlset>\n'
+    )
+    (ROOT/'sitemap.xml').write_text(sitemap, encoding='utf-8')
     (ROOT/'robots.txt').write_text(
         'User-agent: OAI-SearchBot\nAllow: /\n\n'
         'User-agent: GPTBot\nDisallow: /\n\n'

@@ -74,6 +74,10 @@ def check():
     guide_locations={address for pair in guide_urls(BASE) for address in pair}
     expected={url(c) for c in LOCALES}|{url(c)+x+'.html' for c in ['en','tr'] for x in ['privacy','terms','support']}|guide_locations
     require(locations==expected,'sitemap locations')
+    require(len(list(sitemap))==len(locations),'sitemap has no duplicate URLs')
+    raw_sitemap=(ROOT/'sitemap.xml').read_bytes()
+    require(not raw_sitemap.startswith(b'\xef\xbb\xbf'),'sitemap has no BOM')
+    require(raw_sitemap.startswith(b'<?xml version="1.0" encoding="UTF-8"?>'),'sitemap XML declaration')
     for item in list(sitemap)[:len(LOCALES)]:require(len(item.findall('x:link',ns))==len(LOCALES)+1,'sitemap alternates')
     robots=(ROOT/'robots.txt').read_text(encoding='utf-8')
     require('Allow: /' in robots,'robots')
@@ -81,6 +85,7 @@ def check():
     require('User-agent: GPTBot\nDisallow: /' in robots,'GPTBot not used for training crawl')
     require('User-agent: Googlebot\nAllow: /' in robots,'Googlebot allowed')
     require('User-agent: Bingbot\nAllow: /' in robots,'Bingbot allowed')
+    require('User-agent: *\nAllow: /' in robots and 'User-agent: \\*' not in robots,'wildcard user-agent is a real asterisk')
     require('location.replace' not in (ROOT/'assets'/'site.js').read_text(encoding='utf-8'),'no forced language redirect in site.js')
     for file in files:
         require('location.replace' not in file.read_text(encoding='utf-8') and 'data-auto-language' not in file.read_text(encoding='utf-8'), f'{file.name}: forced language redirect')
@@ -137,6 +142,19 @@ def check():
     require(ABOUT['en']['a'] in facts and CONFIG['support_email'] in facts,'llms facts')
     require(all(url(code) in facts and ABOUT[code]['a'] in facts for code in LOCALES),'llms language pages')
     require('apps.apple.com' not in facts and '95%' not in facts,'llms stays factual')
+    outdated = (
+        'voice pack', 'advanced voice pack', 'ses paketi', 'gelişmiş ses paket',
+        'Sprachpaket', 'pack vocal', 'paquete de voz', 'pacchetto vocale', 'pacote de voz',
+        'stempakket', 'pakiet głosu', 'röstpaket', 'stemmepakke', 'äänipaketti', 'Äänipaketti',
+        'πακέτο φωνής', 'hlasový balíček', 'hlasový balík', 'glasovni paket', 'hangcsomag',
+        'pachet de voce', 'гласов пакет', 'häälepaket', 'balss pakotne', 'balso paket',
+        'голосовой пакет', 'голосовий пакет', 'حزمة صوت', 'حزمة الصوت', '音声パック', '음성 팩',
+        'वॉइस पैक', 'paket suara', 'gói giọng', 'Fetch language data', 'Cached language data',
+        'dil verisini almak',
+    )
+    corpus = '\n'.join(file.read_text(encoding='utf-8') for file in files)
+    for phrase in outdated:
+        require(phrase not in corpus, f'outdated app-flow claim remains: {phrase}')
     if failures:raise SystemExit('\n'.join(failures))
     print(f'PASS: {len(files)} HTML files; {len(LOCALES)} localized landing pages; {checked_links} local resource/anchor references; canonical/hreflang; JSON-LD; sitemap; RTL; legal content preservation.')
     print('Browser rendering, screen-reader testing and Lighthouse measurements were not performed.')

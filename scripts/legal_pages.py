@@ -33,11 +33,11 @@ def render_legal(root, name, code, landing, locales, base):
         'en':{
             'privacy':'How DUBSEE handles account data, on-device storage, analytics, advertising and subscriptions.',
             'terms':'Terms for using DUBSEE, including content access, subscriptions, cancellation and responsibilities.',
-            'support':'Contact DUBSEE support and find help with dubbing, voice downloads, local data and subscriptions.'},
+            'support':'Contact DUBSEE support and find help with dubbing, local data and subscriptions.'},
         'tr':{
             'privacy':'DUBSEE hesap bilgileri, cihaz içi veriler, analiz, reklam ve aboneliklerine ilişkin gizlilik politikası.',
             'terms':'DUBSEE kullanımı, içerik erişimi, abonelikler, iptal ve kullanıcı sorumluluklarına ilişkin şartlar.',
-            'support':'DUBSEE desteğine ulaşın; dublaj, ses paketi indirme, cihaz verileri ve abonelikler hakkında yardım alın.'}}
+            'support':'DUBSEE desteğine ulaşın; dublaj, cihaz verileri ve abonelikler hakkında yardım alın.'}}
     description=descriptions[lang][name]
     head=re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")[^"]*("[^>]*>)', lambda m:m[1]+escape(description,quote=True)+m[2],head)
     head=re.sub(r'(<meta property="og:url" content=")[^"]+("[^>]*>)',lambda m:m[1]+canonical+m[2],head)

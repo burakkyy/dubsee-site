@@ -120,7 +120,7 @@ BODIES = {
 <li>Press play and listen on the iPhone. You can switch between the original audio and the dubbing.</li>
 </ol>
 <h2>If you hear no dubbing</h2>
-<p>The support notes for this case are specific. Try another video. Check the dubbing language in Settings. On first launch, wait until the advanced voice pack has finished downloading. Deleting the app removes the on-device library, cache, and settings; that is the local reset, not a cloud trash folder.</p>
+<p>The support notes for this case are specific. Try another video. Check the dubbing language in Settings. Language packs are included in the app, so the first launch does not wait on a voice download, and you can start without creating an account. Deleting the app removes the on-device library, cache, and settings; that is the local reset, not a cloud trash folder.</p>
 <h2>What the free plan allows while you practice</h2>
 <p>Free includes 1 video a day, plus up to 2 more after rewarded ads, with about an 18-minute limit per free video. A long lecture may stop at that limit until DubSee Pro removes it. Rewarded ads are part of the free allowance; the privacy policy says an ad plays when you choose to watch one. DubSee Pro also adds 10 voices and background playback with the screen locked. Prices and any trial are shown by the App Store, not guessed on this website.</p>
 <p>If you are still deciding whether a video qualifies, read <a href="@@TRANSLATOR@@">which YouTube videos DUBSEE translates</a>. For what the voice is doing, read <a href="@@DUB@@">AI video dubbing</a>. Contact is on the <a href="@@SUPPORT@@">support page</a>.</p>
@@ -136,7 +136,7 @@ BODIES = {
 <li>Oynatın ve iPhone’da dinleyin. Orijinal ses ile dublaj arasında geçiş yapılabilir.</li>
 </ol>
 <h2>Dublaj gelmezse</h2>
-<p>Destek notları bu durum için kısadır. Başka bir video deneyin. Ayarlar’dan seslendirme dilini kontrol edin. İlk açılışta gelişmiş ses paketinin inmesini bekleyin. Uygulamayı silmek cihazdaki kütüphane, önbellek ve ayarları kaldırır; bu, bulutta bir çöp kutusu değil, cihaz içi sıfırlamadır.</p>
+<p>Destek notları bu durum için kısadır. Başka bir video deneyin. Ayarlar’dan seslendirme dilini kontrol edin. Dil paketleri uygulamanın içindedir; ilk açılışta ses indirmesi beklenmez ve hesap açmadan kullanmaya başlanabilir. Uygulamayı silmek cihazdaki kütüphane, önbellek ve ayarları kaldırır; bu, bulutta bir çöp kutusu değil, cihaz içi sıfırlamadır.</p>
 <h2>Denerken ücretsiz planın sınırı</h2>
 <p>Ücretsiz planda günde 1 video vardır; ödüllü reklamlarla en fazla 2 video daha açılır. Ücretsiz videolar yaklaşık 18 dakika ile sınırlıdır. Uzun bir ders, DubSee Pro süre sınırını kaldırana kadar bu sınırda kesilebilir. Ödüllü reklam, ücretsiz kullanımın parçasıdır; gizlilik metni, reklamın siz izlemeyi seçtiğinizde oynadığını söyler. DubSee Pro ayrıca 10 ses ile kilit ekranında arka planda dinlemeyi açar. Fiyat ve varsa deneme, bu sitede tahmin edilmez; App Store gösterir.</p>
 <p>Videonun uygun olup olmadığını ayırt etmek için <a href="@@TRANSLATOR@@">DUBSEE’nin hangi YouTube videolarını çevirdiğine</a> bakın. Sesin ne yaptığını okumak için <a href="@@DUB@@">yapay zekâ dublajı</a> sayfasına geçin. Yazışma adresi <a href="@@SUPPORT@@">destek sayfasında</a>.</p>
@@ -146,7 +146,7 @@ BODIES = {
   'en': '''
 <p>AI video dubbing, in this app, means one job: take the spoken content of a supported YouTube video, translate it, and play that translation with a synthetic voice while you watch. It is not a studio recording, a human casting session, or a subtitle file you export. The thing you hear is speech, generated for the language you picked.</p>
 <h2>What you hear</h2>
-<p>You choose the target language. DUBSEE plays the dubbed voice with the video. The App Store listing also says you can switch back to the original audio, which matters when a term is clearer in the source language than in the translation. On first launch the app may download an advanced voice pack; until that download finishes, dubbing can be missing even though the link is valid.</p>
+<p>You choose the target language. DUBSEE plays the dubbed voice with the video. The App Store listing also says you can switch back to the original audio, which matters when a term is clearer in the source language than in the translation. Language packs are included in the app, so dubbing does not wait on a first-launch download.</p>
 <p>Ten advanced voices are part of DubSee Pro, not a claim that every free session offers a voice menu of ten. Background and lock-screen listening are also Pro features. Free playback stays inside the daily video count and the roughly 18-minute limit.</p>
 <h2>Where dubbing helps</h2>
 <p>A lecture, a conference talk, a cooking or woodworking tutorial, and a podcast episode uploaded to YouTube are the cases where a spoken translation is more useful than pausing to read. The picture stays in front of you. The voice carries the explanation. DUBSEE does not become a newsroom, a film catalog, or a remote control because the video happens to be about those subjects.</p>
@@ -157,7 +157,7 @@ BODIES = {
   'tr': '''
 <p>Bu uygulamada yapay zekâ video dublajı tek bir iştir: desteklenen bir YouTube videosunun konuşmasını çevirmek ve siz izlerken o çeviriyi sentetik bir sesle okumak. Stüdyo kaydı, oyuncu seçimi veya dışa aktardığınız bir altyazı dosyası değildir. Duyduğunuz şey, seçtiğiniz dil için üretilmiş konuşmadır.</p>
 <h2>Ne duyarsınız</h2>
-<p>Hedef dili siz seçersiniz. DUBSEE dublajı videoyla birlikte çalar. App Store açıklaması, özgün sese geri dönebildiğinizi de söyler. Bir terim kaynak dilde çeviriden daha açıksa bu geçiş işe yarar. İlk açılışta uygulama gelişmiş ses paketini indirebilir. İndirme bitmeden bağlantı doğru olsa da dublaj gelmeyebilir.</p>
+<p>Hedef dili siz seçersiniz. DUBSEE dublajı videoyla birlikte çalar. App Store açıklaması, özgün sese geri dönebildiğinizi de söyler. Bir terim kaynak dilde çeviriden daha açıksa bu geçiş işe yarar. Dil paketleri uygulamanın içindedir. Dublaj, ilk açılışta bir ses indirmesinin bitmesini beklemez.</p>
 <p>On gelişmiş ses, her ücretsiz oturumda on seslik bir menü olduğu iddiası değil, DubSee Pro’nun parçasıdır. Arka planda ve kilit ekranında dinlemek de Pro özelliğidir. Ücretsiz oynatma, günlük video sayısı ve yaklaşık 18 dakikalık sınırın içinde kalır.</p>
 <h2>Dublajın işe yaradığı yer</h2>
 <p>Ders, konferans konuşması, yemek veya marangozluk anlatımı ve YouTube’a yüklenmiş bir podcast bölümü, konuşmanın çevirisinin altyazıda durup okumaktan daha kullanışlı olduğu yerlerdir. Görüntü önünüzde kalır. Açıklamayı ses taşır. Videonun konusu haber, film veya kumanda olsa da DUBSEE bir haber odası, film arşivi veya kumanda uygulaması olmaz.</p>
@@ -182,11 +182,11 @@ FAQS = {
  'howto': {
   'en': [
     {'q': 'Where do I paste the YouTube link?', 'a': 'In the DUBSEE app on your iPhone, not on this website. You can also look for DUBSEE in the iOS share sheet after the App Store version is installed.'},
-    {'q': 'The video opens but there is no dubbing. What should I check?', 'a': 'Try another video, confirm the dubbing language in Settings, and wait if the advanced voice pack is still downloading from the first launch.'},
+    {'q': 'The video opens but there is no dubbing. What should I check?', 'a': 'Try another video and confirm the dubbing language in Settings. Language packs are included, and no account is required to start.'},
   ],
   'tr': [
     {'q': 'YouTube bağlantısını nereye yapıştırırım?', 'a': 'Bu siteye değil, iPhone’daki DUBSEE uygulamasına. App Store sürümü kuruluysa iOS paylaş menüsünde DUBSEE’ye de bakabilirsiniz.'},
-    {'q': 'Video açılıyor ama dublaj yok. Neye bakmalıyım?', 'a': 'Başka bir video deneyin, Ayarlar’dan seslendirme dilini kontrol edin ve ilk açılıştaki gelişmiş ses paketi hâlâ iniyorsa bitmesini bekleyin.'},
+    {'q': 'Video açılıyor ama dublaj yok. Neye bakmalıyım?', 'a': 'Başka bir video deneyin ve Ayarlar’dan seslendirme dilini kontrol edin. Dil paketleri uygulamanın içindedir; başlamak için hesap gerekmez.'},
   ],
  },
  'dubbing': {

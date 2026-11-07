@@ -31,7 +31,7 @@
 
       <article>
         <h1>Privacy Policy</h1>
-        <p class="meta">Last updated: October 29, 2026</p>
+        <p class="meta">Last updated: November 7, 2026</p>
 
         <p class="lang">English</p>
 
@@ -56,7 +56,7 @@
         <ul>
           <li>App settings (language, voice, appearance, volume preferences)</li>
           <li>Library / history of videos you opened</li>
-          <li>Cached language data and generated dubbing audio</li>
+          <li>Generated dubbing audio stored on the device</li>
           <li>Onboarding state</li>
           <li>How many free videos you have used today</li>
         </ul>
@@ -69,9 +69,7 @@
         <p>Depending on features you use, the app may:</p>
         <ul>
           <li>Load video pages / embeds for content you requested</li>
-          <li>Fetch language data needed for on-device dubbing</li>
-          <li>Download the advanced voice pack when you choose to install it</li>
-          <li>Sign you in and check whether your subscription is active</li>
+          <li>Sign you in if you choose to, and check whether your subscription is active</li>
           <li>Show a rewarded advertisement when you choose to watch one</li>
           <li>Send the usage events described below</li>
           <li>Open external links you tap (privacy, terms, App Store, email)</li>
@@ -143,7 +141,7 @@
         <ul>
           <li>Uygulama ayarları (dil, ses, görünüm, ses seviyesi)</li>
           <li>Açtığınız videoların kütüphane / geçmiş kayıtları</li>
-          <li>Önbelleğe alınan dil verisi ve üretilen dublaj sesi</li>
+          <li>Cihazda tutulan üretilmiş dublaj sesi</li>
           <li>Karşılama durumu</li>
           <li>Bugün kaç ücretsiz video kullandığınız</li>
         </ul>
@@ -155,9 +153,7 @@
         <h2>3. Ağ kullanımı</h2>
         <ul>
           <li>İstediğiniz video içeriğini oynatmak</li>
-          <li>Cihaz içi dublaj için gereken dil verisini almak</li>
-          <li>İsteğe bağlı olarak gelişmiş ses paketini indirmek</li>
-          <li>Giriş yapmak ve aboneliğin açık olup olmadığına bakmak</li>
+          <li>İsterseniz giriş yapmak ve aboneliğin açık olup olmadığına bakmak</li>
           <li>Siz izlemeyi seçtiğinizde ödüllü reklam göstermek</li>
           <li>Aşağıda anlatılan kullanım olaylarını göndermek</li>
           <li>Tıkladığınız dış bağlantıları açmak</li>
