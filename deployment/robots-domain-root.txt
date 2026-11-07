@@ -1,3 +1,20 @@
+# Google and other crawlers read robots.txt from the host root:
+# https://burakkyy.github.io/robots.txt
+# https://burakkyy.github.io/dubsee-site/robots.txt does not replace that file.
+# If a root file already exists, merge these groups into it. Do not wipe unrelated rules.
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: *
 Allow: /
 

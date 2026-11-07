@@ -3,11 +3,14 @@
 import json
 import re
 import xml.etree.ElementTree as ET
+from html import escape as html_escape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 from build import ROOT, BASE, CONFIG, LOCALES, HREFLANG, STORE, url
-from search_copy import ABOUT, SEARCH
+from search_copy import ABOUT, SEARCH, EXTRA_FAQ
+from positioning import FACTS
+from guides import guide_urls
 
 class Page(HTMLParser):
     def __init__(self,text):
@@ -21,9 +24,9 @@ def check():
     failures=[]; checked_links=0
     def require(ok,msg):
         if not ok: failures.append(msg)
-    files=list(ROOT.glob('*.html'))+list(ROOT.glob('*/*.html'))
+    files=sorted({*ROOT.glob('*.html'), *ROOT.glob('*/*.html'), *ROOT.glob('*/*/index.html')})
     for file in files:
-        text=file.read_text();p=Page(text)
+        text=file.read_text(encoding='utf-8');p=Page(text)
         ids={a['id'] for _,a in p.tags if 'id' in a}
         idlist=[a['id'] for _,a in p.tags if 'id' in a]
         require(len(ids)==len(idlist),f'{file}: duplicate ID')
@@ -42,7 +45,7 @@ def check():
                 checked_links+=1
     for code in LOCALES:
         file=ROOT/('index.html' if code=='en' else code+'/index.html')
-        text=file.read_text();p=Page(text)
+        text=file.read_text(encoding='utf-8');p=Page(text)
         require(any(tag=='html' and a.get('lang')==code for tag,a in p.tags),f'{code}: document language')
         if code=='ar':require('dir="rtl"' in text,'ar: RTL missing')
         canon=[a['href'] for tag,a in p.tags if tag=='link' and a.get('rel')=='canonical']
@@ -51,27 +54,55 @@ def check():
         require(alts==({HREFLANG[c]:url(c) for c in LOCALES}|{'x-default':BASE+'/'}),f'{code}: hreflang')
         schema=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',text).group(1))
         require(len(schema['@graph'])==5,f'{code}: structured data')
-        visible=set(LOCALES[code].values())|{SEARCH[code]['question'],SEARCH[code]['answer'],ABOUT[code]['q'],ABOUT[code]['a']}
+        visible=set(LOCALES[code].values())|set(FACTS[code].values())|{SEARCH[code]['question'],SEARCH[code]['answer'],ABOUT[code]['q'],ABOUT[code]['a']}
+        for item in EXTRA_FAQ[code]:
+            visible.add(item['q']); visible.add(item['a'])
         require(all(q['name'] in visible and q['acceptedAnswer']['text'] in visible for q in schema['@graph'][-1]['mainEntity']),f'{code}: visible FAQ agreement')
         app=next(node for node in schema['@graph'] if node['@type']=='SoftwareApplication')
         require(app['description']==ABOUT[code]['a'] and app['isAccessibleForFree'] is True, f'{code}: application facts')
+        require(app.get('inLanguage')==code, f'{code}: page language on the app node')
         require(app.get('installUrl')==STORE if STORE else 'installUrl' not in app, f'{code}: store link')
-        require(f'<h2 class="section-heading">{SEARCH[code]["heading"]}</h2>' in text,f'{code}: language search heading')
-        require(f'<title>{SEARCH[code]["title"]}</title>' in text,f'{code}: search title')
+        require(app.get('downloadUrl')==STORE if STORE else 'downloadUrl' not in app, f'{code}: download link')
+        require(f'<h2 class="section-heading">{html_escape(SEARCH[code]["heading"])}</h2>' in text,f'{code}: language search heading')
+        require(f'<title>{html_escape(SEARCH[code]["title"])}</title>' in text,f'{code}: search title')
+        require('Unlimited dubbing' not in text and 'Ad-free listening' not in text, f'{code}: unqualified unlimited or ad-free tag')
         require('95%' not in text and '%95' not in text,f'{code}: unverified statistic')
         require('google-analytics' not in text,f'{code}: unexpected tracking')
     ns={'sm':'http://www.sitemaps.org/schemas/sitemap/0.9','x':'http://www.w3.org/1999/xhtml'}
     sitemap=ET.parse(ROOT/'sitemap.xml').getroot()
     locations={x.find('sm:loc',ns).text for x in sitemap}
-    expected={url(c) for c in LOCALES}|{url(c)+x+'.html' for c in ['en','tr'] for x in ['privacy','terms','support']}
+    guide_locations={address for pair in guide_urls(BASE) for address in pair}
+    expected={url(c) for c in LOCALES}|{url(c)+x+'.html' for c in ['en','tr'] for x in ['privacy','terms','support']}|guide_locations
     require(locations==expected,'sitemap locations')
     for item in list(sitemap)[:len(LOCALES)]:require(len(item.findall('x:link',ns))==len(LOCALES)+1,'sitemap alternates')
-    require('Allow: /' in (ROOT/'robots.txt').read_text(),'robots')
+    robots=(ROOT/'robots.txt').read_text(encoding='utf-8')
+    require('Allow: /' in robots,'robots')
+    require('User-agent: OAI-SearchBot\nAllow: /' in robots,'OAI-SearchBot allowed')
+    require('User-agent: GPTBot\nDisallow: /' in robots,'GPTBot not used for training crawl')
+    require('User-agent: Googlebot\nAllow: /' in robots,'Googlebot allowed')
+    require('User-agent: Bingbot\nAllow: /' in robots,'Bingbot allowed')
+    require('location.replace' not in (ROOT/'assets'/'site.js').read_text(encoding='utf-8'),'no forced language redirect in site.js')
+    for file in files:
+        require('location.replace' not in file.read_text(encoding='utf-8') and 'data-auto-language' not in file.read_text(encoding='utf-8'), f'{file.name}: forced language redirect')
+    for en_url, tr_url in guide_urls(BASE):
+        for address in (en_url, tr_url):
+            guide_file=ROOT/address.removeprefix(BASE+'/')
+            if guide_file.is_dir(): guide_file=guide_file/'index.html'
+            guide_text=guide_file.read_text(encoding='utf-8')
+            guide_page=Page(guide_text)
+            guide_canon=[a['href'] for tag,a in guide_page.tags if tag=='link' and a.get('rel')=='canonical']
+            require(guide_canon==[address], f'guide canonical {address}')
+            guide_alts={a.get('hreflang'):a.get('href') for tag,a in guide_page.tags if tag=='link' and a.get('rel')=='alternate'}
+            require(guide_alts=={'en':en_url,'tr':tr_url,'x-default':en_url}, f'guide hreflang {address}')
+            require('support.html' in guide_text and (STORE in guide_text if STORE else True), f'guide keeps support and store links {address}')
+            guide_schema=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', guide_text).group(1))
+            guide_faq=next(node for node in guide_schema['@graph'] if node['@type']=='FAQPage')
+            require(all(html_escape(item['name']) in guide_text and html_escape(item['acceptedAnswer']['text']) in guide_text for item in guide_faq['mainEntity']), f'guide FAQ visible {address}')
     from legal_pages import source_content
     for code in LOCALES:
         dest=ROOT if code=='en' else ROOT/code
         for name in ['privacy','terms','support']:
-            text=(dest/(name+'.html')).read_text()
+            text=(dest/(name+'.html')).read_text(encoding='utf-8')
             article=re.search(r'<article[^>]*data-source-content="[^"]+">(.*?)</article>',text,re.S).group(1)
             require(article==source_content(ROOT,name,code),f'{code}/{name}: source content mismatch')
             info=Page(text)
@@ -88,7 +119,7 @@ def check():
         relative=address.removeprefix(BASE+'/')
         file=ROOT/relative
         if file.is_dir():file=file/'index.html'
-        canonical=[a['href'] for tag,a in Page(file.read_text()).tags if tag=='link' and a.get('rel')=='canonical']
+        canonical=[a['href'] for tag,a in Page(file.read_text(encoding='utf-8')).tags if tag=='link' and a.get('rel')=='canonical']
         require(canonical==[address],f'sitemap contains a noncanonical URL: {address}')
 
     require(set(SEARCH)==set(ABOUT)==set(LOCALES),'search copy covers every language')
@@ -102,7 +133,7 @@ def check():
         require(all(len(value)>=80 for value in values) if field=='a' else all(values),f'about {field} is present')
     require(all(len(SEARCH[code]['title'])<=70 for code in LOCALES),'search titles stay within 70 characters')
     require(all(60<=len(SEARCH[code]['description'])<=180 for code in LOCALES),'search descriptions stay within 60–180 characters')
-    facts=(ROOT/'llms.txt').read_text()
+    facts=(ROOT/'llms.txt').read_text(encoding='utf-8')
     require(ABOUT['en']['a'] in facts and CONFIG['support_email'] in facts,'llms facts')
     require(all(url(code) in facts and ABOUT[code]['a'] in facts for code in LOCALES),'llms language pages')
     require('apps.apple.com' not in facts and '95%' not in facts,'llms stays factual')

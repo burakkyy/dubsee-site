@@ -89,9 +89,9 @@ Sürekli animasyon döngüsü, harici kütüphane, yeni görsel veya video eklen
 
 ## v7 — Google için teknik düzeltmeler
 
-- Otomatik dil yönlendirmesi yalnızca ana giriş /dubsee-site/ ve /dubsee-site/index.html adreslerinde uygulanır. Doğrudan dil ve alt sayfa adreslerinde devre dışıdır.
+- Zorunlu dil yönlendirmesi kaldırıldı. Tarayıcı dili veya kayıtlı tercih, onay verilmeden URL’yi değiştirmez; eşleşen dil için kapatılabilir bir öneri gösterilir. Elle seçim localStorage’da durur ve sonraki öneride önceliklidir.
 - Dil menüsünün ana sayfa bağlantıları canonical klasör adreslerini kullanır. 31 dilin karşılıklı hreflang bağlantıları korunur.
-- Site haritasında 37 canonical adres bulunur: 31 ana sayfa + gerçekten İngilizce/Türkçe içeriği bulunan 6 hukuki/destek sayfası.
+- Site haritasında 43 canonical adres bulunur: 31 ana sayfa + İngilizce/Türkçe 6 hukuki/destek sayfası + İngilizce/Türkçe 6 rehber sayfası.
 - Diğer 29 dilin İngilizce içerik gösteren hukuki arayüzleri erişilebilir kalır; canonical ve Open Graph URL İngilizce aslına gider. Bu sayfalarda yalnızca gerçek en/tr çeviri sürümleri hreflang ile belirtilir.
 - Her dilde arama başlığı anlık video dublajı, YouTube ve iPhone bağlamıyla düzenlendi. Hukuki/destek sayfalarının meta açıklamaları kendi içeriklerini açıklar.
 - Uygulamanın yapılandırılmış verisinde gerçek özellik açıklamaları ve yayıncı ilişkisi kullanılır. Sahte fiyat, yorum veya puan yoktur.
@@ -99,4 +99,4 @@ Sürekli animasyon döngüsü, harici kütüphane, yeni görsel veya video eklen
 - Tek dosyalık inceleme önizlemesine noindex eklendi; Google'a sunulacak asıl site klasörlü statik HTML sürümüdür.
 - config.json içinde isteğe bağlı google_site_verification alanı vardır. Gerçek Search Console doğrulama kodu eklendikten sonra build.py çalıştırılmalıdır. Boşken meta etiket üretilmez.
 
-Yayın adımları ve alan adı kökündeki robots.txt ayrıntısı GOOGLE-SETUP-TR.md dosyasındadır. Yeni yönlendirme testi: node scripts/check_language_routing.cjs.
+Yayın adımları ve alan adı kökündeki robots.txt ayrıntısı GOOGLE-SETUP-TR.md dosyasındadır. Dil önerisi testi: python scripts/check_language_routing.py.

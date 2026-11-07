@@ -52,10 +52,9 @@ function route(){if(!location.hash.startsWith('#page-'))return;const [key,anchor
 window.addEventListener('hashchange',route);
 let saved='';try{saved=localStorage.getItem('dubsee-language')||'';}catch(_){}
 const supported=SUPPORTED;
-const choices=saved&&supported.includes(saved)?[saved]:Array.from(navigator.languages||[navigator.language||'en']);
-const preferred=choices.map(x=>x.toLowerCase().split(/[-_]/)[0]).find(x=>supported.includes(x))||'en';
+const start=saved&&supported.includes(saved)?saved:'en';
 hydrate();init();
-if(location.hash.startsWith('#page-'))route();else show(preferred,'',false);
+if(location.hash.startsWith('#page-'))route();else show(start,'',false);
 '''.replace('PAGES',safe_json(pages)).replace('ASSETS',safe_json(assets)).replace('SITEJS',(ROOT/'assets/site.js').read_text()).replace('SUPPORTED',safe_json(list(LOCALES)))
     template='''<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>DUBSEE</title><meta name="robots" content="noindex,follow"><link rel="icon" href="ICON"><style>CSS</style></head><body>BODY<script>RUNTIME</script></body></html>'''
     result=template.replace('ICON',assets['app-icon.png']).replace('CSS',css).replace('BODY',initial).replace('RUNTIME',js)

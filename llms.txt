@@ -1,45 +1,56 @@
 # DUBSEE
 
-> DUBSEE is an iPhone app that dubs YouTube videos in real time in 30+ languages.
+> DUBSEE is an iPhone app that translates the speech in supported YouTube videos and plays it with AI dubbing.
 
-DUBSEE is an iPhone app that dubs YouTube videos in real time in 30+ languages. Paste a video link, choose a language and one of 10 voices, and listen while the video plays. Regular YouTube videos with captions are supported. Shorts and live streams are not. You can start free, and an optional subscription inside the app adds access. DUBSEE is independent and is not affiliated with YouTube or Google.
+DUBSEE is an iPhone app that translates the speech in supported YouTube videos and plays it with AI dubbing in a language you choose. Paste a video link, choose a language, and listen on your iPhone. Regular YouTube videos with captions can work; Shorts and live streams do not. Availability depends on the video, captions, language, and region. Free access is 1 video a day, plus up to 2 more after rewarded ads, with about an 18-minute limit per free video. DubSee Pro removes that duration limit and the ads, and adds unlimited videos, 10 voices, and background playback with the screen locked. DUBSEE is independent and is not affiliated with YouTube or Google.
 
 Support: dubsee.app@gmail.com
 Official site: https://burakkyy.github.io/dubsee-site/
 
+DUBSEE is not a video player, news app, or TV remote. Regular YouTube videos with captions can work. Shorts and live streams do not. Free use is limited. DubSee Pro is optional.
+
 ## Language pages
 
-- [English](https://burakkyy.github.io/dubsee-site/): Dub YouTube videos in your language
-- [Türkçe](https://burakkyy.github.io/dubsee-site/tr/): YouTube videolarını Türkçe dublajla dinle
-- [Deutsch](https://burakkyy.github.io/dubsee-site/de/): YouTube-Videos auf Deutsch anhören
-- [Français](https://burakkyy.github.io/dubsee-site/fr/): Regarder YouTube doublé en français
-- [Español](https://burakkyy.github.io/dubsee-site/es/): Ver YouTube doblado al español
-- [Italiano](https://burakkyy.github.io/dubsee-site/it/): Guardare YouTube doppiato in italiano
-- [Português](https://burakkyy.github.io/dubsee-site/pt/): Ver o YouTube com dobragem em português
-- [Nederlands](https://burakkyy.github.io/dubsee-site/nl/): YouTube-video’s in het Nederlands beluisteren
-- [Polski](https://burakkyy.github.io/dubsee-site/pl/): Oglądaj YouTube z dubbingiem po polsku
-- [Svenska](https://burakkyy.github.io/dubsee-site/sv/): Se YouTube med dubbning på svenska
-- [Dansk](https://burakkyy.github.io/dubsee-site/da/): Se YouTube med dubbing på dansk
-- [Suomi](https://burakkyy.github.io/dubsee-site/fi/): Katso YouTube suomeksi dubattuna
-- [Ελληνικά](https://burakkyy.github.io/dubsee-site/el/): Δες το YouTube με μεταγλώττιση στα ελληνικά
-- [Čeština](https://burakkyy.github.io/dubsee-site/cs/): Sleduj YouTube s dabingem do češtiny
-- [Slovenčina](https://burakkyy.github.io/dubsee-site/sk/): Sleduj YouTube s dabingom do slovenčiny
-- [Slovenščina](https://burakkyy.github.io/dubsee-site/sl/): Glej YouTube s sinhronizacijo v slovenščino
-- [Hrvatski](https://burakkyy.github.io/dubsee-site/hr/): Gledaj YouTube sa sinkronizacijom na hrvatski
-- [Magyar](https://burakkyy.github.io/dubsee-site/hu/): YouTube-videók magyar szinkronnal
-- [Română](https://burakkyy.github.io/dubsee-site/ro/): Vezi YouTube cu dublaj în română
-- [Български](https://burakkyy.github.io/dubsee-site/bg/): Гледай YouTube с дублаж на български
-- [Eesti](https://burakkyy.github.io/dubsee-site/et/): Vaata YouTube’i eesti keeles dubleerituna
-- [Latviešu](https://burakkyy.github.io/dubsee-site/lv/): Skaties YouTube ar dublējumu latviski
-- [Lietuvių](https://burakkyy.github.io/dubsee-site/lt/): Žiūrėk YouTube su dubliavimu lietuviškai
-- [Русский](https://burakkyy.github.io/dubsee-site/ru/): Смотри YouTube с озвучкой на русском
-- [Українська](https://burakkyy.github.io/dubsee-site/uk/): Дивись YouTube з озвученням українською
-- [العربية](https://burakkyy.github.io/dubsee-site/ar/): شاهد يوتيوب بدبلجة عربية
-- [日本語](https://burakkyy.github.io/dubsee-site/ja/): YouTubeを日本語の吹き替えで見る
-- [한국어](https://burakkyy.github.io/dubsee-site/ko/): 유튜브 영상을 한국어 더빙으로 보기
-- [हिन्दी](https://burakkyy.github.io/dubsee-site/hi/): YouTube वीडियो हिंदी डबिंग में सुनें
-- [Bahasa Indonesia](https://burakkyy.github.io/dubsee-site/id/): Tonton YouTube dengan sulih suara bahasa Indonesia
-- [Tiếng Việt](https://burakkyy.github.io/dubsee-site/vi/): Xem YouTube với lồng tiếng tiếng Việt
+- [English](https://burakkyy.github.io/dubsee-site/): Translate supported YouTube videos, then listen
+- [Türkçe](https://burakkyy.github.io/dubsee-site/tr/): Desteklenen YouTube videolarını Türkçe dinle
+- [Deutsch](https://burakkyy.github.io/dubsee-site/de/): YouTube-Videos auf Deutsch übersetzen und anhören
+- [Français](https://burakkyy.github.io/dubsee-site/fr/): Traduire une vidéo YouTube et l’écouter en français
+- [Español](https://burakkyy.github.io/dubsee-site/es/): Traducir vídeos de YouTube y escucharlos en español
+- [Italiano](https://burakkyy.github.io/dubsee-site/it/): Tradurre i video di YouTube e ascoltarli in italiano
+- [Português](https://burakkyy.github.io/dubsee-site/pt/): Traduzir vídeos do YouTube e ouvi-los em português
+- [Nederlands](https://burakkyy.github.io/dubsee-site/nl/): YouTube-video’s naar het Nederlands vertalen en beluisteren
+- [Polski](https://burakkyy.github.io/dubsee-site/pl/): Tłumacz filmów YouTube i odsłuch po polsku
+- [Svenska](https://burakkyy.github.io/dubsee-site/sv/): Översätt YouTube-videor och lyssna på svenska
+- [Dansk](https://burakkyy.github.io/dubsee-site/da/): Oversæt YouTube-videoer og lyt på dansk
+- [Suomi](https://burakkyy.github.io/dubsee-site/fi/): Käännä YouTube-videoita ja kuuntele suomeksi
+- [Ελληνικά](https://burakkyy.github.io/dubsee-site/el/): Μετάφρασε βίντεο YouTube και άκου τα ελληνικά
+- [Čeština](https://burakkyy.github.io/dubsee-site/cs/): Překládej videa z YouTube a poslouchej česky
+- [Slovenčina](https://burakkyy.github.io/dubsee-site/sk/): Prekladaj videá z YouTube a počúvaj po slovensky
+- [Slovenščina](https://burakkyy.github.io/dubsee-site/sl/): Prevajaj videe YouTube in poslušaj slovensko
+- [Hrvatski](https://burakkyy.github.io/dubsee-site/hr/): Prevedi YouTube videozapise i slušaj ih na hrvatskom
+- [Magyar](https://burakkyy.github.io/dubsee-site/hu/): Fordítsd a YouTube-videókat és hallgasd magyarul
+- [Română](https://burakkyy.github.io/dubsee-site/ro/): Traduce videoclipuri YouTube și ascultă-le în română
+- [Български](https://burakkyy.github.io/dubsee-site/bg/): Превеждай YouTube видеа и ги слушай на български
+- [Eesti](https://burakkyy.github.io/dubsee-site/et/): Tõlgi YouTube’i videod ja kuula neid eesti keeles
+- [Latviešu](https://burakkyy.github.io/dubsee-site/lv/): Tulko YouTube video un klausies tos latviski
+- [Lietuvių](https://burakkyy.github.io/dubsee-site/lt/): Versk YouTube įrašus ir klausyk jų lietuviškai
+- [Русский](https://burakkyy.github.io/dubsee-site/ru/): Переводите видео YouTube и слушайте на русском
+- [Українська](https://burakkyy.github.io/dubsee-site/uk/): Перекладайте відео YouTube і слухайте українською
+- [العربية](https://burakkyy.github.io/dubsee-site/ar/): ترجم فيديوهات يوتيوب واستمع إليها بالعربية
+- [日本語](https://burakkyy.github.io/dubsee-site/ja/): YouTube動画を翻訳して日本語で聴く
+- [한국어](https://burakkyy.github.io/dubsee-site/ko/): 유튜브 영상을 번역하고 한국어로 듣기
+- [हिन्दी](https://burakkyy.github.io/dubsee-site/hi/): YouTube वीडियो का अनुवाद करके हिंदी में सुनें
+- [Bahasa Indonesia](https://burakkyy.github.io/dubsee-site/id/): Terjemahkan video YouTube dan dengarkan dalam bahasa Indonesia
+- [Tiếng Việt](https://burakkyy.github.io/dubsee-site/vi/): Dịch video YouTube và nghe bằng tiếng Việt
+
+## Guides
+
+- https://burakkyy.github.io/dubsee-site/youtube-video-translator/
+- https://burakkyy.github.io/dubsee-site/tr/youtube-videolarini-turkce-dinleme/
+- https://burakkyy.github.io/dubsee-site/how-to-translate-youtube-videos-on-iphone/
+- https://burakkyy.github.io/dubsee-site/tr/iphone-youtube-video-cevirisi/
+- https://burakkyy.github.io/dubsee-site/ai-video-dubbing/
+- https://burakkyy.github.io/dubsee-site/tr/yapay-zeka-video-dublaji/
 
 ## What DUBSEE is, in each language
 
@@ -47,184 +58,184 @@ Official site: https://burakkyy.github.io/dubsee-site/
 
 What is DUBSEE?
 
-DUBSEE is an iPhone app that dubs YouTube videos in real time in 30+ languages. Paste a video link, choose a language and one of 10 voices, and listen while the video plays. Regular YouTube videos with captions are supported. Shorts and live streams are not. You can start free, and an optional subscription inside the app adds access. DUBSEE is independent and is not affiliated with YouTube or Google.
+DUBSEE is an iPhone app that translates the speech in supported YouTube videos and plays it with AI dubbing in a language you choose. Paste a video link, choose a language, and listen on your iPhone. Regular YouTube videos with captions can work; Shorts and live streams do not. Availability depends on the video, captions, language, and region. Free access is 1 video a day, plus up to 2 more after rewarded ads, with about an 18-minute limit per free video. DubSee Pro removes that duration limit and the ads, and adds unlimited videos, 10 voices, and background playback with the screen locked. DUBSEE is independent and is not affiliated with YouTube or Google.
 
 ### Türkçe
 
 DUBSEE nedir?
 
-DUBSEE, YouTube videolarını 30’dan fazla dilde anlık dublajla dinleten bir iPhone uygulamasıdır. Video bağlantısını yapıştırır, bir dil ve 10 sesten birini seçer, videoyu izlerken dublajı dinlersin. Altyazısı olan normal videolar desteklenir. Shorts ve canlı yayınlar desteklenmez. Ücretsiz başlayabilirsin; ek erişim uygulama içindeki isteğe bağlı abonelikle sunulur. DUBSEE bağımsızdır ve YouTube veya Google ile bağlantılı değildir.
+DUBSEE, desteklenen YouTube videolarındaki konuşmayı seçtiğin dile çevirip yapay zekâ dublajıyla dinleten bir iPhone uygulamasıdır. Video bağlantısını yapıştırır, dili seçer ve iPhone’unda dinlersin. Altyazısı olan normal videolar çalışabilir; Shorts ve canlı yayınlar çalışmaz. Kullanılabilirlik videoya, altyazıya, dile ve bölgeye bağlıdır. Ücretsiz planda günde 1 video, ödüllü reklamlarla en fazla 2 video daha ve video başına yaklaşık 18 dakika sınırı vardır. DubSee Pro bu süre sınırını ve reklamları kaldırır; sınırsız video, 10 ses ve kilit ekranında arka planda dinleme ekler. DUBSEE bağımsızdır; YouTube veya Google ile bağlantılı değildir.
 
 ### Deutsch
 
 Was ist DUBSEE?
 
-DUBSEE ist eine iPhone-App, die YouTube-Videos in Echtzeit in über 30 Sprachen synchronisiert. Du fügst einen Videolink ein, wählst eine Sprache und eine von 10 Stimmen und hörst die Synchronisation während der Wiedergabe. Normale YouTube-Videos mit Untertiteln werden unterstützt, Shorts und Livestreams nicht. Der Start ist kostenlos; ein optionales Abo in der App erweitert den Zugang. DUBSEE ist unabhängig und nicht mit YouTube oder Google verbunden.
+DUBSEE ist eine iPhone-App, die die Sprache unterstützter YouTube-Videos übersetzt und mit KI-Synchronisation in der gewählten Sprache abspielt. Du fügst einen Videolink ein, wählst eine Sprache und hörst auf dem iPhone zu. Normale Videos mit Untertiteln können funktionieren; Shorts und Livestreams nicht. Die Verfügbarkeit hängt von Video, Untertiteln, Sprache und Region ab. Kostenlos sind 1 Video pro Tag plus bis zu 2 weitere nach belohnten Anzeigen, mit etwa 18 Minuten pro kostenlosem Video. DubSee Pro hebt dieses Zeitlimit und die Werbung auf und ergänzt unbegrenzt Videos, 10 Stimmen und Wiedergabe bei gesperrtem Bildschirm. DUBSEE ist unabhängig und nicht mit YouTube oder Google verbunden.
 
 ### Français
 
 Qu’est-ce que DUBSEE ?
 
-DUBSEE est une app iPhone qui double les vidéos YouTube en temps réel dans plus de 30 langues. Collez un lien, choisissez une langue et l’une des 10 voix, puis écoutez pendant la lecture. Les vidéos YouTube classiques avec sous-titres sont prises en charge. Les Shorts et les directs ne le sont pas. Vous pouvez commencer gratuitement ; un abonnement facultatif dans l’app ajoute de l’accès. DUBSEE est indépendant et n’est pas affilié à YouTube ni à Google.
+DUBSEE est une app iPhone qui traduit la parole des vidéos YouTube prises en charge et la joue avec un doublage par IA dans la langue choisie. Collez un lien, choisissez une langue et écoutez sur iPhone. Les vidéos classiques avec sous-titres peuvent fonctionner ; pas les Shorts ni les directs. La disponibilité dépend de la vidéo, des sous-titres, de la langue et de la région. L’accès gratuit comprend 1 vidéo par jour, plus jusqu’à 2 après des annonces récompensées, avec environ 18 minutes par vidéo gratuite. DubSee Pro retire cette limite et les annonces, et ajoute des vidéos illimitées, 10 voix et la lecture écran verrouillé. DUBSEE est indépendant et n’est pas affilié à YouTube ni à Google.
 
 ### Español
 
 ¿Qué es DUBSEE?
 
-DUBSEE es una app para iPhone que dobla vídeos de YouTube en tiempo real en más de 30 idiomas. Pega un enlace, elige un idioma y una de 10 voces, y escucha mientras se reproduce el vídeo. Admite vídeos normales de YouTube con subtítulos. No admite Shorts ni directos. Puedes empezar gratis; una suscripción opcional en la app amplía el acceso. DUBSEE es independiente y no está afiliada a YouTube ni a Google.
+DUBSEE es una app para iPhone que traduce el habla de los vídeos de YouTube compatibles y la reproduce con doblaje de IA en el idioma elegido. Pega un enlace, elige un idioma y escucha en el iPhone. Los vídeos normales con subtítulos pueden funcionar; los Shorts y los directos no. La disponibilidad depende del vídeo, los subtítulos, el idioma y la región. El acceso gratuito incluye 1 vídeo al día, más hasta 2 tras anuncios bonificados, con unos 18 minutos por vídeo gratuito. DubSee Pro quita ese límite y los anuncios, y añade vídeos ilimitados, 10 voces y reproducción con la pantalla bloqueada. DUBSEE es independiente y no está afiliado a YouTube ni a Google.
 
 ### Italiano
 
 Che cos’è DUBSEE?
 
-DUBSEE è un’app per iPhone che doppia i video di YouTube in tempo reale in oltre 30 lingue. Incolla un link, scegli una lingua e una di 10 voci, e ascolta durante la riproduzione. Sono supportati i video YouTube normali con sottotitoli. Shorts e dirette no. Si può iniziare gratis; un abbonamento facoltativo nell’app aggiunge accesso. DUBSEE è indipendente e non è affiliata a YouTube o Google.
+DUBSEE è un’app per iPhone che traduce il parlato dei video di YouTube supportati e lo riproduce con doppiaggio IA nella lingua scelta. Incolla un link, scegli una lingua e ascolta sull’iPhone. I video normali con sottotitoli possono funzionare; Shorts e dirette no. La disponibilità dipende da video, sottotitoli, lingua e regione. L’accesso gratuito include 1 video al giorno, più fino a 2 dopo annunci con premio, con circa 18 minuti per video gratuito. DubSee Pro toglie quel limite e gli annunci, e aggiunge video illimitati, 10 voci e l’ascolto a schermo bloccato. DUBSEE è indipendente e non è affiliata a YouTube o Google.
 
 ### Português
 
 O que é o DUBSEE?
 
-O DUBSEE é uma app para iPhone que faz a dobragem de vídeos do YouTube em tempo real em mais de 30 línguas. Cola um link, escolhe uma língua e uma de 10 vozes, e ouve enquanto o vídeo passa. Vídeos normais do YouTube com legendas são suportados. Shorts e diretos não. Podes começar grátis; uma subscrição opcional na app acrescenta acesso. O DUBSEE é independente e não está afiliado ao YouTube nem à Google.
+O DUBSEE é uma app para iPhone que traduz a fala de vídeos compatíveis do YouTube e reproduz essa tradução com dobragem por IA na língua escolhida. Cola um link, escolhe uma língua e ouve no iPhone. Vídeos normais com legendas podem funcionar; Shorts e diretos não. A disponibilidade depende do vídeo, das legendas, da língua e da região. O acesso gratuito inclui 1 vídeo por dia, mais até 2 depois de anúncios com recompensa, com cerca de 18 minutos por vídeo gratuito. O DubSee Pro remove esse limite e os anúncios, e acrescenta vídeos ilimitados, 10 vozes e reprodução com o ecrã bloqueado. O DUBSEE é independente e não está afiliado ao YouTube nem à Google.
 
 ### Nederlands
 
 Wat is DUBSEE?
 
-DUBSEE is een iPhone-app die YouTube-video’s realtime nasynchroniseert in meer dan 30 talen. Plak een link, kies een taal en een van 10 stemmen, en luister terwijl de video speelt. Gewone YouTube-video’s met ondertiteling worden ondersteund. Shorts en livestreams niet. Je kunt gratis beginnen; een optioneel abonnement in de app geeft extra toegang. DUBSEE is onafhankelijk en niet verbonden met YouTube of Google.
+DUBSEE is een iPhone-app die de spraak van ondersteunde YouTube-video’s vertaalt en afspeelt met AI-nasynchronisatie in de gekozen taal. Plak een link, kies een taal en luister op de iPhone. Gewone video’s met ondertiteling kunnen werken; Shorts en livestreams niet. Beschikbaarheid hangt af van de video, ondertiteling, taal en regio. Gratis is 1 video per dag, plus maximaal 2 extra na beloonde advertenties, met ongeveer 18 minuten per gratis video. DubSee Pro haalt die limiet en de advertenties weg en voegt onbeperkt video’s, 10 stemmen en weergave bij een vergrendeld scherm toe. DUBSEE is onafhankelijk en niet verbonden met YouTube of Google.
 
 ### Polski
 
 Czym jest DUBSEE?
 
-DUBSEE to aplikacja na iPhone’a, która dubbinguje filmy z YouTube w czasie rzeczywistym w ponad 30 językach. Wklej link, wybierz język i jeden z 10 głosów, a dubbing usłyszysz podczas odtwarzania. Obsługiwane są zwykłe filmy z YouTube z napisami. Shorts i transmisje na żywo nie. Można zacząć za darmo; opcjonalna subskrypcja w aplikacji dodaje dostęp. DUBSEE jest niezależne i nie jest powiązane z YouTube ani Google.
+DUBSEE to aplikacja na iPhone’a, która tłumaczy mowę z obsługiwanych filmów YouTube i odtwarza ją z dubbingiem AI w wybranym języku. Wklej link, wybierz język i słuchaj na iPhonie. Zwykłe filmy z napisami mogą działać; Shorts i transmisje na żywo nie. Dostępność zależy od filmu, napisów, języka i regionu. Bezpłatnie jest 1 film dziennie oraz do 2 kolejnych po reklamach z nagrodą, z limitem około 18 minut. DubSee Pro usuwa ten limit i reklamy oraz dodaje filmy bez limitu, 10 głosów i odtwarzanie przy zablokowanym ekranie. DUBSEE jest niezależne i nie jest powiązane z YouTube ani Google.
 
 ### Svenska
 
 Vad är DUBSEE?
 
-DUBSEE är en iPhone-app som dubbar YouTube-videor i realtid på över 30 språk. Klistra in en länk, välj språk och en av 10 röster, och lyssna medan videon spelas. Vanliga YouTube-videor med undertexter stöds. Shorts och livesändningar gör det inte. Du kan börja gratis; en valfri prenumeration i appen ger mer tillgång. DUBSEE är oberoende och inte knutet till YouTube eller Google.
+DUBSEE är en iPhone-app som översätter talet i YouTube-videor som stöds och spelar upp det med AI-dubbning på det språk du väljer. Klistra in en länk, välj språk och lyssna på iPhone. Vanliga videor med undertexter kan fungera; Shorts och livesändningar gör det inte. Tillgängligheten beror på videon, undertexterna, språket och regionen. Gratis är 1 video om dagen plus upp till 2 till efter belönade annonser, med cirka 18 minuter per gratis video. DubSee Pro tar bort den gränsen och annonserna och lägger till obegränsat med videor, 10 röster och uppspelning vid låst skärm. DUBSEE är oberoende och inte knutet till YouTube eller Google.
 
 ### Dansk
 
 Hvad er DUBSEE?
 
-DUBSEE er en iPhone-app, der dubber YouTube-videoer i realtid på over 30 sprog. Indsæt et link, vælg et sprog og en af 10 stemmer, og lyt mens videoen afspilles. Almindelige YouTube-videoer med undertekster understøttes. Shorts og livestreams gør ikke. Du kan starte gratis; et valgfrit abonnement i appen giver mere adgang. DUBSEE er uafhængig og ikke tilknyttet YouTube eller Google.
+DUBSEE er en iPhone-app, der oversætter talen i understøttede YouTube-videoer og afspiller den med AI-dubbing på det valgte sprog. Indsæt et link, vælg et sprog, og lyt på iPhone. Almindelige videoer med undertekster kan virke; Shorts og livestreams gør ikke. Tilgængeligheden afhænger af video, undertekster, sprog og region. Gratis er 1 video om dagen plus op til 2 mere efter belønnede annoncer, med cirka 18 minutter pr. gratis video. DubSee Pro fjerner den grænse og annoncerne og tilføjer ubegrænsede videoer, 10 stemmer og afspilning ved låst skærm. DUBSEE er uafhængig og ikke tilknyttet YouTube eller Google.
 
 ### Suomi
 
 Mikä DUBSEE on?
 
-DUBSEE on iPhone-sovellus, joka dubbaa YouTube-videoita reaaliajassa yli 30 kielellä. Liitä videolinkki, valitse kieli ja yksi 10 äänestä, ja kuuntele videon aikana. Tavalliset YouTube-videot, joissa on tekstitys, ovat tuettuja. Shortsit ja suorat lähetykset eivät ole. Voit aloittaa ilmaiseksi; valinnainen tilaus sovelluksessa lisää käyttöä. DUBSEE on itsenäinen eikä ole yhteydessä YouTubeen tai Googleen.
+DUBSEE on iPhone-sovellus, joka kääntää tuettujen YouTube-videoiden puheen ja toistaa sen tekoälydubbauksena valitulla kielellä. Liitä linkki, valitse kieli ja kuuntele iPhonella. Tavalliset videot, joissa on tekstitys, voivat toimia; Shortsit ja suorat lähetykset eivät. Saatavuus riippuu videosta, tekstityksestä, kielestä ja alueesta. Ilmaiseksi saa 1 videon päivässä ja enintään 2 lisää palkintomainosten jälkeen, noin 18 minuutin rajalla. DubSee Pro poistaa tuon rajan ja mainokset sekä lisää rajattomat videot, 10 ääntä ja toiston lukitulla näytöllä. DUBSEE on itsenäinen eikä ole yhteydessä YouTubeen tai Googleen.
 
 ### Ελληνικά
 
 Τι είναι το DUBSEE;
 
-Το DUBSEE είναι μια εφαρμογή iPhone που μεταγλωττίζει βίντεο YouTube σε πραγματικό χρόνο σε 30+ γλώσσες. Επικόλλησε έναν σύνδεσμο, διάλεξε γλώσσα και μία από 10 φωνές, και άκου όσο παίζει το βίντεο. Υποστηρίζονται κανονικά βίντεο YouTube με υπότιτλους. Όχι τα Shorts και οι ζωντανές μεταδόσεις. Μπορείς να ξεκινήσεις δωρεάν· μια προαιρετική συνδρομή στην εφαρμογή προσθέτει πρόσβαση. Το DUBSEE είναι ανεξάρτητο και δεν συνδέεται με το YouTube ή την Google.
+Το DUBSEE είναι εφαρμογή iPhone που μεταφράζει την ομιλία υποστηριζόμενων βίντεο YouTube και την παίζει με μεταγλώττιση AI στη γλώσσα που επιλέγεις. Επικόλλησε έναν σύνδεσμο, διάλεξε γλώσσα και άκου στο iPhone. Τα κανονικά βίντεο με υπότιτλους μπορεί να λειτουργούν· τα Shorts και οι ζωντανές μεταδόσεις όχι. Η διαθεσιμότητα εξαρτάται από το βίντεο, τους υπότιτλους, τη γλώσσα και την περιοχή. Δωρεάν είναι 1 βίντεο την ημέρα συν έως 2 μετά από διαφημίσεις με ανταμοιβή, με όριο περίπου 18 λεπτών. Το DubSee Pro αφαιρεί αυτό το όριο και τις διαφημίσεις και προσθέτει απεριόριστα βίντεο, 10 φωνές και αναπαραγωγή με κλειδωμένη οθόνη. Το DUBSEE είναι ανεξάρτητο και δεν συνδέεται με YouTube ή Google.
 
 ### Čeština
 
 Co je DUBSEE?
 
-DUBSEE je aplikace pro iPhone, která dabuje videa z YouTube v reálném čase ve více než 30 jazycích. Vlož odkaz, vyber jazyk a jeden z 10 hlasů a poslouchej během přehrávání. Podporována jsou běžná videa YouTube s titulky. Shorts a živé přenosy ne. Začít lze zdarma; volitelné předplatné v aplikaci přidává přístup. DUBSEE je nezávislé a není spojeno s YouTube ani Googlem.
+DUBSEE je aplikace pro iPhone, která přeloží řeč v podporovaných videích z YouTube a přehraje ji dabingem s AI ve zvoleném jazyce. Vlož odkaz, vyber jazyk a poslouchej na iPhonu. Běžná videa s titulky mohou fungovat; Shorts a živé přenosy ne. Dostupnost závisí na videu, titulcích, jazyce a regionu. Zdarma je 1 video denně a až 2 další po reklamách s odměnou, s limitem přibližně 18 minut. DubSee Pro tento limit i reklamy ruší a přidává neomezená videa, 10 hlasů a přehrávání při zamčené obrazovce. DUBSEE je nezávislé a není spojeno s YouTube ani Googlem.
 
 ### Slovenčina
 
 Čo je DUBSEE?
 
-DUBSEE je aplikácia pre iPhone, ktorá dabuje videá z YouTube v reálnom čase vo viac ako 30 jazykoch. Vlož odkaz, vyber jazyk a jeden z 10 hlasov a počúvaj počas prehrávania. Podporované sú bežné videá YouTube s titulkami. Shorts a živé prenosy nie. Začať sa dá zadarmo; voliteľné predplatné v aplikácii pridáva prístup. DUBSEE je nezávislé a nie je spojené s YouTube ani Googlom.
+DUBSEE je aplikácia pre iPhone, ktorá preloží reč v podporovaných videách z YouTube a prehrá ju dabingom s AI vo zvolenom jazyku. Vlož odkaz, vyber jazyk a počúvaj na iPhone. Bežné videá s titulkami môžu fungovať; Shorts a živé prenosy nie. Dostupnosť závisí od videa, titulkov, jazyka a regiónu. Zadarmo je 1 video denne a až 2 ďalšie po reklamách s odmenou, s limitom približne 18 minút. DubSee Pro tento limit aj reklamy ruší a pridáva neobmedzené videá, 10 hlasov a prehrávanie pri zamknutej obrazovke. DUBSEE je nezávislé a nie je spojené s YouTube ani Googlom.
 
 ### Slovenščina
 
 Kaj je DUBSEE?
 
-DUBSEE je aplikacija za iPhone, ki v realnem času sinhronizira videoposnetke YouTube v več kot 30 jezikih. Prilepi povezavo, izberi jezik in enega od 10 glasov ter poslušaj med predvajanjem. Podprti so običajni videoposnetki YouTube s podnapisi. Shorts in prenosi v živo niso. Začneš lahko brezplačno; izbirna naročnina v aplikaciji doda dostop. DUBSEE je neodvisen in ni povezan z YouTube ali Googlom.
+DUBSEE je aplikacija za iPhone, ki prevede govor v podprtih videih YouTube in ga predvaja s sinhronizacijo z UI v izbranem jeziku. Prilepi povezavo, izberi jezik in poslušaj na iPhonu. Običajni videi s podnapisi lahko delujejo; Shorts in prenosi v živo ne. Razpoložljivost je odvisna od videa, podnapisov, jezika in regije. Brezplačno je 1 video na dan in do 2 dodatna po nagrajenih oglasih, z omejitvijo približno 18 minut. DubSee Pro odstrani to omejitev in oglase ter doda neomejene videe, 10 glasov in predvajanje pri zaklenjenem zaslonu. DUBSEE je neodvisen in ni povezan z YouTube ali Googlom.
 
 ### Hrvatski
 
 Što je DUBSEE?
 
-DUBSEE je aplikacija za iPhone koja u stvarnom vremenu sinkronizira YouTube videe na više od 30 jezika. Zalijepi poveznicu, odaberi jezik i jedan od 10 glasova te slušaj dok se video reproducira. Podržani su obični YouTube videi s titlovima. Shorts i prijenosi uživo nisu. Možeš početi besplatno; neobavezna pretplata u aplikaciji dodaje pristup. DUBSEE je neovisan i nije povezan s YouTubeom ni Googleom.
+DUBSEE je aplikacija za iPhone koja prevodi govor u podržanim YouTube videozapisima i reproducira ga uz AI sinkronizaciju na odabranom jeziku. Zalijepi poveznicu, odaberi jezik i slušaj na iPhoneu. Obični videi s titlovima mogu raditi; Shorts i prijenosi uživo ne. Dostupnost ovisi o videu, titlovima, jeziku i regiji. Besplatno je 1 video dnevno i do 2 dodatna nakon nagrađivanih oglasa, s ograničenjem od oko 18 minuta. DubSee Pro uklanja to ograničenje i oglase te dodaje neograničene videozapise, 10 glasova i reprodukciju pri zaključanom zaslonu. DUBSEE je neovisan i nije povezan s YouTubeom ni Googleom.
 
 ### Magyar
 
 Mi a DUBSEE?
 
-A DUBSEE egy iPhone-alkalmazás, amely valós időben szinkronizálja a YouTube-videókat több mint 30 nyelven. Illeszd be a linket, válassz nyelvet és egy hangot a 10 közül, és hallgasd lejátszás közben. A feliratos, normál YouTube-videók támogatottak. A Shorts és az élő adás nem. Ingyen elkezdheted; az alkalmazáson belüli választható előfizetés további hozzáférést ad. A DUBSEE független, és nem áll kapcsolatban a YouTube-bal vagy a Google-lel.
+A DUBSEE egy iPhone-alkalmazás, amely lefordítja a támogatott YouTube-videók beszédét, és a választott nyelven, MI-szinkronnal játssza le. Illessz be egy linket, válassz nyelvet, és hallgasd iPhone-on. A feliratos, normál videók működhetnek; a Shorts és az élő adás nem. Az elérhetőség a videótól, a felirattól, a nyelvtől és a régiótól függ. Ingyen napi 1 videó jár, jutalmazott hirdetések után legfeljebb 2 további, körülbelül 18 perces korláttal. A DubSee Pro eltávolítja ezt a korlátot és a hirdetéseket, és korlátlan videót, 10 hangot, valamint lezárt képernyős lejátszást ad. A DUBSEE független, és nem áll kapcsolatban a YouTube-bal vagy a Google-lel.
 
 ### Română
 
 Ce este DUBSEE?
 
-DUBSEE este o aplicație pentru iPhone care dublează videoclipuri YouTube în timp real în peste 30 de limbi. Lipește un link, alege o limbă și una dintre cele 10 voci și ascultă în timpul redării. Sunt acceptate videoclipurile YouTube obișnuite cu subtitrări. Shorts și live nu. Poți începe gratuit; un abonament opțional în aplicație adaugă acces. DUBSEE este independent și nu este afiliat cu YouTube sau Google.
+DUBSEE este o aplicație pentru iPhone care traduce vorbirea din videoclipurile YouTube acceptate și o redă cu dublaj AI în limba aleasă. Lipește un link, alege o limbă și ascultă pe iPhone. Videoclipurile obișnuite cu subtitrări pot funcționa; Shorts și live nu. Disponibilitatea depinde de videoclip, subtitrări, limbă și regiune. Gratuit este 1 videoclip pe zi, plus până la 2 după reclame cu recompensă, cu aproximativ 18 minute per videoclip gratuit. DubSee Pro elimină această limită și reclamele și adaugă videoclipuri nelimitate, 10 voci și redare cu ecranul blocat. DUBSEE este independent și nu este afiliat cu YouTube sau Google.
 
 ### Български
 
 Какво е DUBSEE?
 
-DUBSEE е приложение за iPhone, което дублира видеоклипове от YouTube в реално време на над 30 езика. Постави линк, избери език и един от 10 гласа и слушай по време на възпроизвеждане. Поддържат се обикновени видеоклипове в YouTube със субтитри. Shorts и предавания на живо не се поддържат. Можеш да започнеш безплатно; незадължителен абонамент в приложението добавя достъп. DUBSEE е независимо и не е свързано с YouTube или Google.
+DUBSEE е приложение за iPhone, което превежда речта в поддържани YouTube видеа и я възпроизвежда с AI дублаж на избрания език. Постави линк, избери език и слушай на iPhone. Обикновените видеа със субтитри могат да работят; Shorts и предаванията на живо не. Наличността зависи от видеото, субтитрите, езика и региона. Безплатно е 1 видео на ден и до 2 допълнителни след награждавани реклами, с около 18 минути на безплатно видео. DubSee Pro премахва този лимит и рекламите и добавя неограничени видеа, 10 гласа и възпроизвеждане при заключен екран. DUBSEE е независимо и не е свързано с YouTube или Google.
 
 ### Eesti
 
 Mis on DUBSEE?
 
-DUBSEE on iPhone’i rakendus, mis dubleerib YouTube’i videoid reaalajas enam kui 30 keeles. Kleebi link, vali keel ja üks 10 häälest ning kuula esituse ajal. Toetatud on tavalised subtiitritega YouTube’i videod. Shorts ja otseülekanded mitte. Alustada saab tasuta; valikuline tellimus rakenduses lisab juurdepääsu. DUBSEE on sõltumatu ega ole seotud YouTube’i ega Google’iga.
+DUBSEE on iPhone’i rakendus, mis tõlgib toetatud YouTube’i videote kõne ja esitab selle tehisintellekti dubleeringuna valitud keeles. Kleebi link, vali keel ja kuula iPhone’is. Tavalised subtiitritega videod võivad töötada; Shorts ja otseülekanded mitte. Saadavus sõltub videost, subtiitritest, keelest ja piirkonnast. Tasuta on 1 video päevas ja kuni 2 lisaks pärast premeeritud reklaame, umbes 18-minutise piiranguga. DubSee Pro eemaldab selle piirangu ja reklaamid ning lisab piiramatud videod, 10 häält ja esituse lukustatud ekraaniga. DUBSEE on sõltumatu ega ole seotud YouTube’i ega Google’iga.
 
 ### Latviešu
 
 Kas ir DUBSEE?
 
-DUBSEE ir iPhone lietotne, kas reāllaikā dublē YouTube video vairāk nekā 30 valodās. Ielīmē saiti, izvēlies valodu un vienu no 10 balsīm un klausies atskaņošanas laikā. Tiek atbalstīti parastie YouTube video ar subtitriem. Shorts un tiešraides netiek. Vari sākt bez maksas; izvēles abonements lietotnē pievieno piekļuvi. DUBSEE ir neatkarīgs un nav saistīts ar YouTube vai Google.
+DUBSEE ir iPhone lietotne, kas iztulko atbalstīto YouTube video runu un atskaņo to ar AI dublējumu izvēlētajā valodā. Ielīmē saiti, izvēlies valodu un klausies iPhone tālrunī. Parasti video ar subtitriem var darboties; Shorts un tiešraides ne. Pieejamība ir atkarīga no video, subtitriem, valodas un reģiona. Bezmaksas ir 1 video dienā un vēl līdz 2 pēc atalgotām reklāmām, ar aptuveni 18 minūšu ierobežojumu. DubSee Pro noņem šo ierobežojumu un reklāmas un pievieno neierobežotus video, 10 balsis un atskaņošanu ar bloķētu ekrānu. DUBSEE ir neatkarīgs un nav saistīts ar YouTube vai Google.
 
 ### Lietuvių
 
 Kas yra DUBSEE?
 
-DUBSEE yra iPhone programa, kuri realiuoju laiku dubliuoja YouTube vaizdo įrašus daugiau nei 30 kalbų. Įklijuok nuorodą, pasirink kalbą ir vieną iš 10 balsų ir klausyk atkūrimo metu. Palaikomi įprasti YouTube įrašai su subtitrais. Shorts ir transliacijos nepalaikomos. Gali pradėti nemokamai; pasirenkama prenumerata programoje prideda prieigą. DUBSEE yra nepriklausoma ir nesusijusi su YouTube ar Google.
+DUBSEE yra iPhone programa, kuri išverčia palaikomų YouTube įrašų kalbą ir atkuria ją DI dubliavimu pasirinkta kalba. Įklijuok nuorodą, pasirink kalbą ir klausyk iPhone telefone. Įprasti įrašai su subtitrais gali veikti; Shorts ir transliacijos ne. Prieinamumas priklauso nuo įrašo, subtitrų, kalbos ir regiono. Nemokamai yra 1 įrašas per dieną ir dar iki 2 po atlyginamų reklamų, su maždaug 18 minučių riba. DubSee Pro panaikina šią ribą ir reklamas bei prideda neribotus įrašus, 10 balsų ir atkūrimą užrakintame ekrane. DUBSEE yra nepriklausoma ir nesusijusi su YouTube ar Google.
 
 ### Русский
 
 Что такое DUBSEE?
 
-DUBSEE — приложение для iPhone, которое озвучивает видео YouTube в реальном времени более чем на 30 языках. Вставь ссылку, выбери язык и один из 10 голосов и слушай во время воспроизведения. Поддерживаются обычные видео YouTube с субтитрами. Shorts и эфиры не поддерживаются. Можно начать бесплатно; необязательная подписка в приложении добавляет доступ. DUBSEE независимо и не связано с YouTube или Google.
+DUBSEE — приложение для iPhone, которое переводит речь в поддерживаемых видео YouTube и воспроизводит её с ИИ-озвучкой на выбранном языке. Вставьте ссылку, выберите язык и слушайте на iPhone. Обычные видео с субтитрами могут работать; Shorts и прямые эфиры нет. Доступность зависит от видео, субтитров, языка и региона. Бесплатно доступно 1 видео в день и ещё до 2 после рекламы с наградой, с ограничением около 18 минут. DubSee Pro убирает этот лимит и рекламу и добавляет видео без лимита, 10 голосов и воспроизведение при заблокированном экране. DUBSEE независимо и не связано с YouTube или Google.
 
 ### Українська
 
 Що таке DUBSEE?
 
-DUBSEE — застосунок для iPhone, який озвучує відео YouTube в реальному часі більш ніж 30 мовами. Встав посилання, обери мову й один із 10 голосів і слухай під час відтворення. Підтримуються звичайні відео YouTube із субтитрами. Shorts і прямі ефіри не підтримуються. Можна почати безкоштовно; необов’язкова підписка в застосунку додає доступ. DUBSEE незалежний і не пов’язаний із YouTube чи Google.
+DUBSEE — застосунок для iPhone, який перекладає мовлення в підтримуваних відео YouTube і відтворює його з ШІ-озвученням обраною мовою. Вставте посилання, оберіть мову й слухайте на iPhone. Звичайні відео із субтитрами можуть працювати; Shorts і прямі ефіри ні. Доступність залежить від відео, субтитрів, мови та регіону. Безкоштовно доступне 1 відео на день і ще до 2 після реклами з винагородою, з обмеженням приблизно 18 хвилин. DubSee Pro прибирає цю межу й рекламу та додає відео без ліміту, 10 голосів і відтворення із заблокованим екраном. DUBSEE незалежний і не пов’язаний із YouTube чи Google.
 
 ### العربية
 
 ما هو DUBSEE؟
 
-DUBSEE تطبيق iPhone يدبلج فيديوهات يوتيوب في الوقت الفعلي بأكثر من 30 لغة. الصق الرابط، اختر لغة وأحد 10 أصوات، واستمع أثناء التشغيل. الفيديوهات العادية في يوتيوب التي لها ترجمات مدعومة. Shorts والبث المباشر غير مدعومين. يمكنك البدء مجانًا، والاشتراك الاختياري داخل التطبيق يضيف وصولًا إضافيًا. DUBSEE مستقل وغير مرتبط بيوتيوب أو Google.
+DUBSEE تطبيق iPhone يترجم الكلام في فيديوهات YouTube المدعومة ويشغّله بدبلجة الذكاء الاصطناعي باللغة التي تختارها. الصق رابطًا واختر لغة واستمع على iPhone. قد تعمل الفيديوهات العادية التي لها ترجمات؛ لا يعمل Shorts ولا البث المباشر. يعتمد التوفر على الفيديو والترجمات واللغة والمنطقة. يشمل المجاني فيديو واحدًا يوميًا وحتى فيديوهين بعد إعلانات بمكافأة، بحد نحو 18 دقيقة. يزيل DubSee Pro هذا الحد والإعلانات ويضيف فيديوهات بلا حد للعدد و10 أصوات وتشغيلًا مع قفل الشاشة. DUBSEE مستقل وغير مرتبط بـ YouTube أو Google.
 
 ### 日本語
 
 DUBSEEとは？
 
-DUBSEEは、YouTube動画を30以上の言語でリアルタイムに吹き替えるiPhoneアプリです。動画リンクを貼り、言語と10種類の声から1つを選ぶと、再生中に吹き替えが聞こえます。字幕のある通常のYouTube動画に対応します。Shortsとライブ配信には対応しません。無料で始められ、アプリ内の任意のサブスクリプションで利用を広げられます。DUBSEEは独立したアプリで、YouTubeやGoogleとは関係ありません。
+DUBSEEは、対応するYouTube動画の会話を選んだ言語に翻訳し、AIの吹き替えで再生するiPhoneアプリです。動画リンクを貼り、言語を選んでiPhoneで聴きます。字幕のある通常の動画は利用できる場合があります。Shortsとライブ配信には対応しません。利用可否は動画、字幕、言語、地域によって変わります。無料では1日1本、報酬付き広告のあと最大2本まで、1本あたり約18分です。DubSee Proはこの時間制限と広告をなくし、本数の上限がない動画、10種類の音声、ロック画面での再生を加えます。DUBSEEは独立したアプリで、YouTubeやGoogleとは関係ありません。
 
 ### 한국어
 
 DUBSEE란?
 
-DUBSEE는 YouTube 영상을 30개 이상의 언어로 실시간 더빙하는 iPhone 앱입니다. 영상 링크를 붙이고 언어와 10개 목소리 중 하나를 고르면, 재생되는 동안 더빙이 들립니다. 자막이 있는 일반 YouTube 영상을 지원합니다. Shorts와 실시간 방송은 지원하지 않습니다. 무료로 시작할 수 있고, 앱 안의 선택적 구독으로 이용을 늘릴 수 있습니다. DUBSEE는 독립 앱이며 YouTube나 Google과 관련이 없습니다.
+DUBSEE는 지원되는 YouTube 영상의 말을 고른 언어로 번역하고 AI 더빙으로 들려주는 iPhone 앱입니다. 영상 링크를 붙이고 언어를 고른 뒤 iPhone에서 들으면 됩니다. 자막이 있는 일반 영상은 될 수 있고, Shorts와 실시간 방송은 되지 않습니다. 지원 여부는 영상, 자막, 언어, 지역에 따라 다릅니다. 무료로는 하루에 1개, 보상형 광고 이후 최대 2개이며 한 개당 약 18분입니다. DubSee Pro는 이 길이 제한과 광고를 없애고, 개수 제한이 없는 영상, 목소리 10개, 잠금 화면 재생을 더합니다. DUBSEE는 독립 앱이며 YouTube나 Google과 관련이 없습니다.
 
 ### हिन्दी
 
 DUBSEE क्या है?
 
-DUBSEE एक iPhone ऐप है जो YouTube वीडियो को 30 से अधिक भाषाओं में रियल-टाइम डब करता है। लिंक चिपकाएँ, भाषा और 10 आवाज़ों में से एक चुनें, और वीडियो चलते समय सुनें। सबटाइटल वाले सामान्य YouTube वीडियो समर्थित हैं। Shorts और लाइव स्ट्रीम नहीं। मुफ़्त शुरू कर सकते हैं; ऐप के अंदर वैकल्पिक सदस्यता अतिरिक्त पहुँच देती है। DUBSEE स्वतंत्र है और YouTube या Google से जुड़ा नहीं है।
+DUBSEE एक iPhone ऐप है जो समर्थित YouTube वीडियो की बातचीत को चुनी हुई भाषा में अनुवाद करके AI डबिंग के साथ चलाता है। लिंक चिपकाएँ, भाषा चुनें और iPhone पर सुनें। सबटाइटल वाले सामान्य वीडियो चल सकते हैं; Shorts और लाइव स्ट्रीम नहीं। उपलब्धता वीडियो, सबटाइटल, भाषा और क्षेत्र पर निर्भर करती है। मुफ़्त में दिन का 1 वीडियो और रिवॉर्डेड विज्ञापनों के बाद अधिकतम 2 और मिलते हैं, लगभग 18 मिनट की सीमा के साथ। DubSee Pro यह सीमा और विज्ञापन हटाता है तथा असीमित वीडियो, 10 आवाज़ें और लॉक स्क्रीन पर चलाना जोड़ता है। DUBSEE स्वतंत्र है और YouTube या Google से जुड़ा नहीं है।
 
 ### Bahasa Indonesia
 
 Apa itu DUBSEE?
 
-DUBSEE adalah aplikasi iPhone yang mengisi suara video YouTube secara realtime dalam 30+ bahasa. Tempel tautan, pilih bahasa dan salah satu dari 10 suara, lalu dengarkan saat video diputar. Video YouTube biasa yang punya takarir didukung. Shorts dan siaran langsung tidak. Kamu bisa mulai gratis; langganan opsional di dalam aplikasi menambah akses. DUBSEE berdiri sendiri dan tidak berafiliasi dengan YouTube atau Google.
+DUBSEE adalah aplikasi iPhone yang menerjemahkan ucapan dalam video YouTube yang didukung dan memutarnya dengan sulih suara AI dalam bahasa yang dipilih. Tempel tautan, pilih bahasa, dan dengarkan di iPhone. Video biasa yang punya takarir dapat berfungsi; Shorts dan siaran langsung tidak. Ketersediaan bergantung pada video, takarir, bahasa, dan wilayah. Gratis mencakup 1 video sehari plus hingga 2 lagi setelah iklan berhadiah, dengan batas sekitar 18 menit. DubSee Pro menghapus batas itu dan iklan, lalu menambahkan video tanpa batas jumlah, 10 suara, dan pemutaran saat layar terkunci. DUBSEE berdiri sendiri dan tidak berafiliasi dengan YouTube atau Google.
 
 ### Tiếng Việt
 
 DUBSEE là gì?
 
-DUBSEE là ứng dụng iPhone lồng tiếng video YouTube theo thời gian thực bằng hơn 30 ngôn ngữ. Dán liên kết, chọn ngôn ngữ và một trong 10 giọng đọc, rồi nghe trong lúc video phát. Video YouTube thông thường có phụ đề được hỗ trợ. Shorts và phát trực tiếp thì không. Bạn có thể bắt đầu miễn phí; gói đăng ký tùy chọn trong ứng dụng bổ sung quyền truy cập. DUBSEE là ứng dụng độc lập, không liên kết với YouTube hay Google.
+DUBSEE là ứng dụng iPhone dịch lời nói trong các video YouTube được hỗ trợ và phát lại bằng lồng tiếng AI theo ngôn ngữ đã chọn. Dán liên kết, chọn ngôn ngữ và nghe trên iPhone. Video thường có phụ đề có thể dùng được; Shorts và phát trực tiếp thì không. Khả năng dùng phụ thuộc vào video, phụ đề, ngôn ngữ và khu vực. Bản miễn phí gồm 1 video mỗi ngày, cộng tối đa 2 video sau quảng cáo có thưởng, giới hạn khoảng 18 phút mỗi video. DubSee Pro bỏ giới hạn đó và quảng cáo, đồng thời thêm số video không giới hạn, 10 giọng đọc và phát khi khóa màn hình. DUBSEE là ứng dụng độc lập, không liên kết với YouTube hay Google.

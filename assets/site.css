@@ -26,3 +26,16 @@
 
 h1,h2,h3{overflow-wrap:anywhere}.float-card{max-width:260px}.story-copy .eyebrow{display:none}.story-copy h3{margin-top:0}
 .section.listen{padding-block:36px 12px}.listen .section-heading{font-size:clamp(28px,3.4vw,42px)}.listen .section-sub{font-size:16px;max-width:680px}
+.hero-lead{max-width:560px}
+.lang-suggest{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 16px;padding:12px 18px;background:#f4f8fd;border-bottom:1px solid var(--line);color:#243249;font-size:14px;text-align:center}
+.lang-suggest p{margin:0}
+.lang-suggest a{color:var(--blue);font-weight:700}
+.lang-suggest button{border:0;background:transparent;color:#5c6b80;padding:6px 2px}
+.guide-links{display:grid;gap:14px;margin-top:28px}
+.guide-links a{display:block;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--soft)}
+.guide-links a strong{display:block;font-size:18px;letter-spacing:-.03em;margin-bottom:6px}
+.guide-links a span{display:block;color:var(--muted);font-size:14px;line-height:1.6}
+.crumbs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:#6a788c;font-size:13px;margin-bottom:18px}
+.crumbs a{color:var(--blue)}
+.guide-page .store-button{margin-top:28px}
+.guide-page .legal-copy h2{margin-top:34px}

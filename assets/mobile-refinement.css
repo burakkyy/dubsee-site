@@ -129,3 +129,5 @@
  .footer-links{order:3;display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:center;align-items:center;gap:clamp(10px,3.2vw,18px);width:100%;margin-top:16px;font-size:clamp(11px,3vw,13px);line-height:1.2}
  .footer-links a{white-space:nowrap}
 }
+.hero h1{font-size:clamp(30px,4.2vw,52px);letter-spacing:-.04em;line-height:1.14;max-width:13em}
+[lang=de] .hero h1,[lang=nl] .hero h1,[lang=fi] .hero h1,[lang=hu] .hero h1,[lang=pl] .hero h1{font-size:clamp(28px,3.5vw,44px);max-width:14em}

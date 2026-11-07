@@ -1,3 +1,16 @@
+window.dubseeSuggest = function (page, languages, saved, dismissed, search, supported) {
+  if (new URLSearchParams(search || '').has('lang')) return '';
+  const norm = tag => String(tag || '').toLowerCase().split(/[-_]/)[0];
+  let browser = 'en';
+  for (const tag of (languages && languages.length ? languages : ['en'])) {
+    const code = norm(tag);
+    if (supported.indexOf(code) !== -1) { browser = code; break; }
+  }
+  const preferred = supported.indexOf(saved) !== -1 ? saved : browser;
+  if (!preferred || preferred === page || dismissed === preferred) return '';
+  return preferred;
+};
+
 (() => {
   window.__dubseeUI?.destroy();
   const cleanups = [];
@@ -12,8 +25,69 @@
   window.__dubseeUI = {destroy() { cleanups.splice(0).forEach(fn => fn()); }};
 
   document.querySelectorAll('.language-option').forEach(link => {
-    on(link, 'click', () => { try { localStorage.setItem('dubsee-language', link.dataset.code); } catch (_) {} });
+    on(link, 'click', () => { try { localStorage.setItem('dubsee-language', link.dataset.code); localStorage.removeItem('dubsee-suggest-dismissed'); } catch (_) {} });
   });
+  const prompts = {
+    en: {q: 'Continue in English?', yes: 'Continue', no: 'Not now'},
+    tr: {q: 'Türkçe devam etmek ister misiniz?', yes: 'Türkçe devam et', no: 'Şimdi değil'},
+    de: {q: 'Auf Deutsch weiter?', yes: 'Auf Deutsch weiter', no: 'Nicht jetzt'},
+    fr: {q: 'Continuer en français ?', yes: 'Continuer', no: 'Pas maintenant'},
+    es: {q: '¿Seguir en español?', yes: 'Seguir', no: 'Ahora no'},
+    it: {q: 'Continuare in italiano?', yes: 'Continua', no: 'Non ora'},
+    pt: {q: 'Continuar em português?', yes: 'Continuar', no: 'Agora não'},
+    nl: {q: 'Verder in het Nederlands?', yes: 'Verder', no: 'Niet nu'},
+    pl: {q: 'Kontynuować po polsku?', yes: 'Kontynuuj', no: 'Nie teraz'},
+    sv: {q: 'Fortsätta på svenska?', yes: 'Fortsätt', no: 'Inte nu'},
+    da: {q: 'Fortsætte på dansk?', yes: 'Fortsæt', no: 'Ikke nu'},
+    fi: {q: 'Jatketaanko suomeksi?', yes: 'Jatka', no: 'Ei nyt'},
+    el: {q: 'Συνέχεια στα ελληνικά;', yes: 'Συνέχεια', no: 'Όχι τώρα'},
+    cs: {q: 'Pokračovat česky?', yes: 'Pokračovat', no: 'Teď ne'},
+    sk: {q: 'Pokračovať po slovensky?', yes: 'Pokračovať', no: 'Teraz nie'},
+    sl: {q: 'Nadaljujem v slovenščini?', yes: 'Nadaljuj', no: 'Ne zdaj'},
+    hr: {q: 'Nastaviti na hrvatskom?', yes: 'Nastavi', no: 'Ne sada'},
+    hu: {q: 'Folytatod magyarul?', yes: 'Folytatom', no: 'Most nem'},
+    ro: {q: 'Continuăm în română?', yes: 'Continuă', no: 'Nu acum'},
+    bg: {q: 'Да продължим на български?', yes: 'Продължи', no: 'Не сега'},
+    et: {q: 'Jätkata eesti keeles?', yes: 'Jätka', no: 'Mitte praegu'},
+    lv: {q: 'Turpināt latviski?', yes: 'Turpināt', no: 'Ne tagad'},
+    lt: {q: 'Tęsti lietuviškai?', yes: 'Tęsti', no: 'Ne dabar'},
+    ru: {q: 'Продолжить на русском?', yes: 'Продолжить', no: 'Не сейчас'},
+    uk: {q: 'Продовжити українською?', yes: 'Продовжити', no: 'Не зараз'},
+    ar: {q: 'هل تتابع بالعربية؟', yes: 'تابع بالعربية', no: 'ليس الآن'},
+    ja: {q: '日本語で続けますか？', yes: '日本語で続ける', no: '今はしない'},
+    ko: {q: '한국어로 계속할까요?', yes: '한국어로 계속', no: '나중에'},
+    hi: {q: 'हिंदी में जारी रखें?', yes: 'जारी रखें', no: 'अभी नहीं'},
+    id: {q: 'Lanjut dalam bahasa Indonesia?', yes: 'Lanjutkan', no: 'Nanti saja'},
+    vi: {q: 'Tiếp tục bằng tiếng Việt?', yes: 'Tiếp tục', no: 'Để sau'}
+  };
+  const supportedCodes = Array.from(document.querySelectorAll('.language-option')).map(link => link.dataset.code);
+  let savedLanguage = '';
+  let dismissedLanguage = '';
+  try {
+    savedLanguage = localStorage.getItem('dubsee-language') || '';
+    dismissedLanguage = localStorage.getItem('dubsee-suggest-dismissed') || '';
+  } catch (_) {}
+  const suggested = window.dubseeSuggest(document.documentElement.lang, Array.from(navigator.languages || [navigator.language || 'en']), savedLanguage, dismissedLanguage, location.search, supportedCodes);
+  const suggestedLink = suggested && document.querySelector('.language-option[data-code="' + suggested + '"]');
+  if (suggestedLink && prompts[suggested]) {
+    const banner = document.createElement('div');
+    banner.className = 'lang-suggest';
+    banner.lang = suggested;
+    banner.dir = suggested === 'ar' ? 'rtl' : 'ltr';
+    const text = document.createElement('p');
+    text.textContent = prompts[suggested].q;
+    const go = document.createElement('a');
+    go.href = suggestedLink.getAttribute('href');
+    go.textContent = prompts[suggested].yes;
+    const dismiss = document.createElement('button');
+    dismiss.type = 'button';
+    dismiss.textContent = prompts[suggested].no;
+    banner.append(text, go, dismiss);
+    document.querySelector('.header-shell')?.insertAdjacentElement('afterend', banner);
+    on(go, 'click', () => { try { localStorage.setItem('dubsee-language', suggested); localStorage.removeItem('dubsee-suggest-dismissed'); } catch (_) {} });
+    on(dismiss, 'click', () => { try { localStorage.setItem('dubsee-suggest-dismissed', suggested); } catch (_) {} banner.remove(); });
+    cleanups.push(() => banner.remove());
+  }
   document.querySelectorAll('.language-picker, .mobile-menu').forEach(picker => {
     const search = picker.querySelector('[data-language-search]');
     if (search) on(search, 'input', () => {

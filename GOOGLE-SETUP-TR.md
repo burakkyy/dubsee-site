@@ -2,7 +2,7 @@
 
 ## Hazır olanlar
 
-31 dilde statik HTML ana sayfa, canonical/hreflang, 37 canonical URL içeren sitemap.xml, mobil düzen, responsive görseller, yapılandırılmış veri ve doğrudan dil adreslerini koruyan yönlendirme davranışı hazırdır. Bu, indeks veya sıralama garantisi değildir.
+31 dilde statik HTML ana sayfa, canonical/hreflang, 43 canonical URL içeren sitemap.xml, mobil düzen, responsive görseller ve yapılandırılmış veri hazırdır. Dil önerisi bir bağlantıdır; URL kullanıcı onay vermeden değişmez. Bu, indeks veya sıralama garantisi değildir.
 
 Kaynaklar: Google Search Central çok dilli site rehberi ve canonical rehberi.
 https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites
@@ -25,7 +25,7 @@ Alternatif doğrulama yöntemleri kullanılabilir; doğrulama dosyası yöntemi 
 Doğrulanan mülke şu tam adresi gönder:
 https://burakkyy.github.io/dubsee-site/sitemap.xml
 
-Site haritasında 31 dilde ana sayfa ve asıl İngilizce/Türkçe hukuki/destek sayfaları vardır. İngilizce metnin yerelleştirilmiş arayüzlerde tekrarlandığı diğer alt sayfalar sitemap'e dahil edilmedi. Erişimleri kapatılmadı; canonical İngilizce aslına bağlandı.
+Site haritasında 31 dil ana sayfası, asıl İngilizce/Türkçe hukuki ve destek sayfaları ve İngilizce/Türkçe rehber sayfaları vardır. İngilizce metnin yerelleştirilmiş arayüzlerde tekrarlandığı diğer hukuki sayfalar sitemap'e dahil edilmedi. Erişimleri kapatılmadı; canonical İngilizce aslına bağlandı.
 
 ## 4. robots.txt ve GitHub proje yolu
 

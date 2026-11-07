@@ -6,7 +6,7 @@ from pathlib import Path
 
 def source_content(root, name, code):
     source = root/'content'/f'{name}.source'
-    text = source.read_text()
+    text = source.read_text(encoding='utf-8')
     article = re.search(r'<article>(.*?)</article>',text,re.S).group(1)
     parts = re.split(r'<p class="lang">(?:English|Türkçe)</p>',article)
     # The source publishes English and Turkish; do not invent different legal terms.
@@ -52,7 +52,7 @@ def render_legal(root, name, code, landing, locales, base):
     # Match locale changes to the same legal page, not back to a landing page.
     header=re.sub(r'(class="language-option"[^>]*data-code="([^"]+)"[^>]*href=")[^"]+("[^>]*>)',lambda m:m[1]+prefix+('' if m[2]=='en' else m[2]+'/')+name+'.html'+m[3],header)
     article=source_content(root,name,code)
-    original=(root/'content'/f'{name}.source').read_text()
+    original=(root/'content'/f'{name}.source').read_text(encoding='utf-8')
     meta=re.search(r'<p class="meta">(.*?)</p>',original,re.S)
     updated=''
     if name!='support' and meta:
