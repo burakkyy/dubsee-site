@@ -185,7 +185,8 @@ def build():
         'User-agent: Bingbot\nAllow: /\n\n'
         'User-agent: *\nAllow: /\n\n'
         f'Sitemap: {BASE}/sitemap.xml\n'
-        f'Sitemap: {BASE}/sitemap.txt\n',
+        f'Sitemap: {BASE}/sitemap.txt\n'
+        f'Sitemap: {BASE}/sitemap-generated.xml\n',
         encoding='utf-8'
     )
     (ROOT/'llms.txt').write_text(llms_text(), encoding='utf-8')

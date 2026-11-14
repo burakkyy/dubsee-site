@@ -93,7 +93,11 @@ def check():
     require('User-agent: Googlebot\nAllow: /' in robots,'Googlebot allowed')
     require('User-agent: Bingbot\nAllow: /' in robots,'Bingbot allowed')
     require('User-agent: *\nAllow: /' in robots and 'User-agent: \\*' not in robots,'wildcard user-agent is a real asterisk')
-    require(f'Sitemap: {BASE}/sitemap.xml\nSitemap: {BASE}/sitemap.txt\n' in robots,'robots lists both sitemaps')
+    require(f'Sitemap: {BASE}/sitemap.xml\nSitemap: {BASE}/sitemap.txt\nSitemap: {BASE}/sitemap-generated.xml\n' in robots,'robots lists the sitemaps')
+    generated=ET.parse(ROOT/'sitemap-generated.xml').getroot()
+    generated_locs={item.find('sm:loc',ns).text for item in generated}
+    require(generated_locs==set(text_lines),'generated sitemap lists the same URLs')
+    require(b'xmlns:xsi' in (ROOT/'sitemap-generated.xml').read_bytes(),'generated sitemap keeps the tool namespace')
     require('location.replace' not in (ROOT/'assets'/'site.js').read_text(encoding='utf-8'),'no forced language redirect in site.js')
     for file in files:
         require('location.replace' not in file.read_text(encoding='utf-8') and 'data-auto-language' not in file.read_text(encoding='utf-8'), f'{file.name}: forced language redirect')

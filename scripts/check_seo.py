@@ -245,6 +245,7 @@ def check_robots_text(failures, text, label):
         'User-agent: *\nAllow: /',
         f'Sitemap: {BASE}/sitemap.xml',
         f'Sitemap: {BASE}/sitemap.txt',
+        f'Sitemap: {BASE}/sitemap-generated.xml',
     )
     for rule in required:
         if rule not in text:
