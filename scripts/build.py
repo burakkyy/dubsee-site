@@ -154,30 +154,29 @@ def build():
             (dest/(name+'.html')).write_text(render_legal(ROOT,name,code,page,LOCALES,BASE),encoding='utf-8')
     icons = {'apple': icon('apple'), 'globe': icon('globe'), 'menu': icon('menu')}
     guide_pairs = write_guides(ROOT, LOCALES, BASE, STORE, CONFIG['support_email'], icons, date.today().year)
-    def alternate_links(pairs):
-        return ''.join(f'    <xhtml:link rel="alternate" hreflang="{lang}" href="{xml(href)}"/>\n' for lang, href in pairs)
-    def url_block(loc, pairs=()):
-        body = f'  <url>\n    <loc>{xml(loc)}</loc>\n'
-        if pairs:
-            body += alternate_links(pairs)
-        return body + '  </url>'
-    entries = []
-    for c in LOCALES:
-        pairs = [(HREFLANG[a], url(a)) for a in LOCALES] + [('x-default', BASE + '/')]
-        entries.append(url_block(url(c), pairs))
-    for code in ['en','tr']:
-        for name in ['privacy','terms','support']:
+    # Hreflang stays in each page's <head>. Sitemap alternates made a ~100KB
+    # document that Search Console fetched and then reported as unreadable.
+    updated = date.today().isoformat()
+    def url_block(loc):
+        return (
+            '  <url>\n'
+            f'    <loc>{xml(loc)}</loc>\n'
+            f'    <lastmod>{updated}</lastmod>\n'
+            '  </url>'
+        )
+    entries = [url_block(url(c)) for c in LOCALES]
+    for code in ['en', 'tr']:
+        for name in ['privacy', 'terms', 'support']:
             entries.append(url_block(url(code) + name + '.html'))
     for en_url, tr_url in guide_pairs:
-        pairs = [('en', en_url), ('tr', tr_url), ('x-default', en_url)]
-        entries.append(url_block(en_url, pairs))
-        entries.append(url_block(tr_url, pairs))
+        entries.append(url_block(en_url))
+        entries.append(url_block(tr_url))
     sitemap = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + '\n'.join(entries) + '\n</urlset>\n'
     )
-    (ROOT/'sitemap.xml').write_text(sitemap, encoding='utf-8')
+    (ROOT/'sitemap.xml').write_bytes(sitemap.encode('utf-8'))
     (ROOT/'robots.txt').write_text(
         'User-agent: OAI-SearchBot\nAllow: /\n\n'
         'User-agent: GPTBot\nDisallow: /\n\n'

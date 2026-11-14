@@ -78,7 +78,9 @@ def check():
     raw_sitemap=(ROOT/'sitemap.xml').read_bytes()
     require(not raw_sitemap.startswith(b'\xef\xbb\xbf'),'sitemap has no BOM')
     require(raw_sitemap.startswith(b'<?xml version="1.0" encoding="UTF-8"?>'),'sitemap XML declaration')
-    for item in list(sitemap)[:len(LOCALES)]:require(len(item.findall('x:link',ns))==len(LOCALES)+1,'sitemap alternates')
+    require(b'xmlns:xhtml' not in raw_sitemap and b'\r\n' not in raw_sitemap,'sitemap is a plain LF urlset')
+    for item in sitemap:
+        require(item.find('sm:lastmod',ns) is not None and not item.findall('x:link',ns),'sitemap entries are loc plus lastmod')
     robots=(ROOT/'robots.txt').read_text(encoding='utf-8')
     require('Allow: /' in robots,'robots')
     require('User-agent: OAI-SearchBot\nAllow: /' in robots,'OAI-SearchBot allowed')

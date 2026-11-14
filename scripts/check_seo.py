@@ -218,6 +218,11 @@ def check_sitemap_tree(failures, root):
         locations.append(text)
         if not text or not text.startswith(BASE + '/'):
             fail(failures, f'sitemap location outside the site: {text}')
+        lastmod = item.find('sm:lastmod', SITEMAP_NS)
+        if lastmod is None or not lastmod.text or len(lastmod.text) != 10:
+            fail(failures, f'sitemap lastmod missing for {text}')
+        if item.findall('x:link', SITEMAP_NS):
+            fail(failures, f'sitemap should not repeat hreflang inside {text}')
     if len(locations) != len(set(locations)):
         fail(failures, 'sitemap contains duplicate URLs')
     homes, legal, guides = expected_locations()
@@ -226,12 +231,8 @@ def check_sitemap_tree(failures, root):
         fail(failures, f'sitemap URL set differs: missing={sorted((homes|legal|guides)-found)} extra={sorted(found-(homes|legal|guides))}')
     if len(locations) != 43:
         fail(failures, f'sitemap has {len(locations)} URLs, expected 43')
-    home_items = list(root)[:len(LOCALES)]
-    for item in home_items:
-        codes = [link.get('hreflang') for link in item.findall('x:link', SITEMAP_NS)]
-        if codes != [*LOCALES, 'x-default']:
-            fail(failures, 'homepage sitemap alternates are not the 31 languages plus x-default')
-            break
+    if 'xmlns:xhtml' in (ROOT / 'sitemap.xml').read_text(encoding='utf-8'):
+        fail(failures, 'sitemap still declares the xhtml namespace')
     return locations
 
 
