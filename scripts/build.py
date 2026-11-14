@@ -154,9 +154,16 @@ def build():
             (dest/(name+'.html')).write_text(render_legal(ROOT,name,code,page,LOCALES,BASE),encoding='utf-8')
     icons = {'apple': icon('apple'), 'globe': icon('globe'), 'menu': icon('menu')}
     guide_pairs = write_guides(ROOT, LOCALES, BASE, STORE, CONFIG['support_email'], icons, date.today().year)
-    # Hreflang stays in each page's <head>. Sitemap alternates made a ~100KB
-    # document that Search Console fetched and then reported as unreadable.
+    # Hreflang stays in each page's <head>. The XML sitemap is loc plus lastmod.
+    # sitemap.txt is the same list as plain text, which Google reads without an XML parser.
     updated = date.today().isoformat()
+    locs = [url(code) for code in LOCALES]
+    for code in ['en', 'tr']:
+        for name in ['privacy', 'terms', 'support']:
+            locs.append(url(code) + name + '.html')
+    for en_url, tr_url in guide_pairs:
+        locs.append(en_url)
+        locs.append(tr_url)
     def url_block(loc):
         return (
             '  <url>\n'
@@ -164,30 +171,25 @@ def build():
             f'    <lastmod>{updated}</lastmod>\n'
             '  </url>'
         )
-    entries = [url_block(url(c)) for c in LOCALES]
-    for code in ['en', 'tr']:
-        for name in ['privacy', 'terms', 'support']:
-            entries.append(url_block(url(code) + name + '.html'))
-    for en_url, tr_url in guide_pairs:
-        entries.append(url_block(en_url))
-        entries.append(url_block(tr_url))
     sitemap = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + '\n'.join(entries) + '\n</urlset>\n'
+        + '\n'.join(url_block(loc) for loc in locs) + '\n</urlset>\n'
     )
     (ROOT/'sitemap.xml').write_bytes(sitemap.encode('utf-8'))
+    (ROOT/'sitemap.txt').write_bytes(('\n'.join(locs) + '\n').encode('utf-8'))
     (ROOT/'robots.txt').write_text(
         'User-agent: OAI-SearchBot\nAllow: /\n\n'
         'User-agent: GPTBot\nDisallow: /\n\n'
         'User-agent: Googlebot\nAllow: /\n\n'
         'User-agent: Bingbot\nAllow: /\n\n'
         'User-agent: *\nAllow: /\n\n'
-        f'Sitemap: {BASE}/sitemap.xml\n',
+        f'Sitemap: {BASE}/sitemap.xml\n'
+        f'Sitemap: {BASE}/sitemap.txt\n',
         encoding='utf-8'
     )
     (ROOT/'llms.txt').write_text(llms_text(), encoding='utf-8')
-    print(f'Built {len(LOCALES)} languages, {len(guide_pairs) * 2} guide pages, sitemap.xml, robots.txt and llms.txt.')
+    print(f'Built {len(LOCALES)} languages, {len(guide_pairs) * 2} guide pages, sitemap.xml, sitemap.txt, robots.txt and llms.txt.')
 
 def llms_text():
     pages = '\n'.join(f'- [{LOCALES[code]["native"]}]({url(code)}): {SEARCH[code]["heading"]}' for code in LOCALES)

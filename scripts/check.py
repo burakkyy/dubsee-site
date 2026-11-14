@@ -81,6 +81,11 @@ def check():
     require(b'xmlns:xhtml' not in raw_sitemap and b'\r\n' not in raw_sitemap,'sitemap is a plain LF urlset')
     for item in sitemap:
         require(item.find('sm:lastmod',ns) is not None and not item.findall('x:link',ns),'sitemap entries are loc plus lastmod')
+    text_sitemap=(ROOT/'sitemap.txt').read_bytes()
+    require(not text_sitemap.startswith(b'\xef\xbb\xbf') and b'\r' not in text_sitemap,'text sitemap is UTF-8 LF without a BOM')
+    text_lines=text_sitemap.decode('utf-8').splitlines()
+    require(text_lines==[item.find('sm:loc',ns).text for item in sitemap],'text sitemap lists the same URLs in the same order')
+    require(all(line.startswith('https://') and ' ' not in line for line in text_lines),'text sitemap lines are absolute URLs')
     robots=(ROOT/'robots.txt').read_text(encoding='utf-8')
     require('Allow: /' in robots,'robots')
     require('User-agent: OAI-SearchBot\nAllow: /' in robots,'OAI-SearchBot allowed')
@@ -88,6 +93,7 @@ def check():
     require('User-agent: Googlebot\nAllow: /' in robots,'Googlebot allowed')
     require('User-agent: Bingbot\nAllow: /' in robots,'Bingbot allowed')
     require('User-agent: *\nAllow: /' in robots and 'User-agent: \\*' not in robots,'wildcard user-agent is a real asterisk')
+    require(f'Sitemap: {BASE}/sitemap.xml\nSitemap: {BASE}/sitemap.txt\n' in robots,'robots lists both sitemaps')
     require('location.replace' not in (ROOT/'assets'/'site.js').read_text(encoding='utf-8'),'no forced language redirect in site.js')
     for file in files:
         require('location.replace' not in file.read_text(encoding='utf-8') and 'data-auto-language' not in file.read_text(encoding='utf-8'), f'{file.name}: forced language redirect')
