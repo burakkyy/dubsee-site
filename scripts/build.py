@@ -90,9 +90,9 @@ def render(code):
     schema = {
       '@context': 'https://schema.org', '@graph': [
         {'@type':'Organization','@id':BASE+'/#organization','name':'DUBSEE','alternateName':'DubSee','url':BASE+'/','logo':BASE+'/assets/app-icon.png','email':CONFIG['support_email'],'description':about['a']},
-        {'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'DUBSEE','inLanguage':list(LOCALES),'publisher':{'@id':BASE+'/#organization'}},
+        {'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'DUBSEE','alternateName':'DubSee','inLanguage':list(LOCALES),'publisher':{'@id':BASE+'/#organization'}},
         {'@type':'WebPage','@id':url(code)+'#webpage','url':url(code),'name':title,'description':summary,'inLanguage':code,'isPartOf':{'@id':BASE+'/#website'},'about':{'@id':BASE+'/#app'},'mainEntity':{'@id':BASE+'/#app'}},
-        {'@type':'SoftwareApplication','@id':BASE+'/#app','name':'DUBSEE','alternateName':'DubSee','applicationCategory':'MultimediaApplication','applicationSubCategory':'Photo & Video','operatingSystem':'iOS','isAccessibleForFree':True,'inLanguage':code,'availableLanguage':list(LOCALES),'publisher':{'@id':BASE+'/#organization'},'url':url(code),'image':BASE+'/assets/app-icon.png','description':about['a'],'featureList':[t['realtime'], '30+ '+t['languages'], t['unlimited'], t['backgroundbody'], t['boostbody'], t['librarybody']], **({'downloadUrl':STORE,'installUrl':STORE} if STORE else {})},
+        {'@type':'SoftwareApplication','@id':BASE+'/#app','name':'DUBSEE','alternateName':'DubSee','applicationCategory':'MultimediaApplication','applicationSubCategory':'Photo & Video','operatingSystem':'iOS','isAccessibleForFree':True,'inLanguage':code,'availableLanguage':list(LOCALES),'publisher':{'@id':BASE+'/#organization'},'url':BASE+'/','mainEntityOfPage':{'@id':url(code)+'#webpage'},'sameAs':[STORE] if STORE else [],'image':BASE+'/assets/app-icon.png','description':about['a'],'featureList':[t['realtime'], '30+ '+t['languages'], t['unlimited'], t['backgroundbody'], t['boostbody'], t['librarybody']], **({'downloadUrl':STORE,'installUrl':STORE} if STORE else {})},
         {'@type':'FAQPage','@id':url(code)+'#faq','inLanguage':code,'mainEntity':[{'@type':'Question','name':item['q'],'acceptedAnswer':{'@type':'Answer','text':item['a']}} for item in (about, {'q':search['question'],'a':search['answer']})]+[{'@type':'Question','name':t[q],'acceptedAnswer':{'@type':'Answer','text':t[a]}} for q,a in [('compatible','compatiblebody'),('free','freebody')]]+[{'@type':'Question','name':item['q'],'acceptedAnswer':{'@type':'Answer','text':item['a']}} for item in EXTRA_FAQ[code]]}
       ]
     }
@@ -108,7 +108,8 @@ def render(code):
     return f'''<!doctype html>
 <html lang="{code}" dir="{'rtl' if code=='ar' else 'ltr'}">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8"><meta name="apple-itunes-app" content="app-id=6814276744">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)}</title><meta name="description" content="{esc(summary)}">
 {('<meta name="google-site-verification" content="'+esc(CONFIG.get('google_site_verification',''),quote=True)+'">') if CONFIG.get('google_site_verification') else ''}
 <meta name="theme-color" content="#ffffff"><meta name="robots" content="index,follow,max-image-preview:large">

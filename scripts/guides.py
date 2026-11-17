@@ -264,9 +264,10 @@ def _page(lang, pair, locales, base, store, email, icons, year, lang_list):
         f'<details class="faq-item"><summary>{escape(item["q"])}</summary><p>{escape(item["a"])}</p></details>'
         for item in faqs
     )
+    current_page = ' aria-current="page"'
     options = ''.join(
         f'<a class="language-option" data-code="{code}" lang="{code}" hreflang="{code}" href="{_href(lang, code, pair)}"'
-        f'{" aria-current=\"page\"" if code == lang else ""}>{escape(row["native"])}</a>'
+        f'{current_page if code == lang else ""}>{escape(row["native"])}</a>'
         for code, row in locales.items()
     )
     crumbs_home = 'Home' if lang == 'en' else 'Ana sayfa'
