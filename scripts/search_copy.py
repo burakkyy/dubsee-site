@@ -450,6 +450,3 @@ for _code, _items in EXTRA_FAQ.items():
     if len(_items) != 5:
         raise SystemExit(f'{_code} expected 5 extra questions')
 
-# Lead localized search titles with the app name for brand recognition.
-for localized_search in SEARCH.values():
-    localized_search["title"] = "DUBSEE — " + localized_search["title"].split(" | ")[0]
