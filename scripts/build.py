@@ -178,6 +178,14 @@ def build():
         + '\n'.join(url_block(loc) for loc in locs) + '\n</urlset>\n'
     )
     (ROOT/'sitemap.xml').write_bytes(sitemap.encode('utf-8'))
+    # Minimal URL-only sitemap for an independent Search Console fetch.
+    minimal_sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + ''.join(f'  <url><loc>{xml(loc)}</loc></url>\n' for loc in locs)
+        + '</urlset>\n'
+    )
+    (ROOT/'sitemap-pages.xml').write_text(minimal_sitemap, encoding='utf-8')
     (ROOT/'sitemap-index.xml').write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
