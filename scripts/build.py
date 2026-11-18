@@ -189,7 +189,7 @@ def build():
     (ROOT/'sitemap-index.xml').write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        f'  <sitemap><loc>{xml(BASE)}/sitemap.xml</loc></sitemap>\n'
+        f'  <sitemap><loc>{xml(BASE)}/sitemap-pages.xml</loc></sitemap>\n'
         '</sitemapindex>\n', encoding='utf-8'
     )
     (ROOT/'sitemap.txt').write_bytes(('\n'.join(locs) + '\n').encode('utf-8'))
