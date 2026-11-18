@@ -236,17 +236,17 @@ def check_sitemap_tree(failures, root):
     return locations
 
 
-def check_robots_text(failures, text, label):
+def check_robots_text(failures, text, label, sitemap_urls=None):
     required = (
         'User-agent: OAI-SearchBot\nAllow: /',
         'User-agent: GPTBot\nDisallow: /',
         'User-agent: Googlebot\nAllow: /',
         'User-agent: Bingbot\nAllow: /',
         'User-agent: *\nAllow: /',
-        f'Sitemap: {BASE}/sitemap.xml',
-        f'Sitemap: {BASE}/sitemap.txt',
-        f'Sitemap: {BASE}/sitemap-generated.xml',
     )
+    if sitemap_urls is None:
+        sitemap_urls = [f'{BASE}/sitemap.xml', f'{BASE}/sitemap.txt', f'{BASE}/sitemap-generated.xml']
+    required += tuple(f'Sitemap: {address}' for address in sitemap_urls)
     for rule in required:
         if rule not in text:
             fail(failures, f'{label} missing rule: {rule.splitlines()[0]}')
@@ -317,7 +317,7 @@ def main():
             fail(failures, f'host robots.txt status {status}')
         else:
             text = body.decode('utf-8')
-            check_robots_text(failures, text, 'host robots.txt')
+            check_robots_text(failures, text, 'host robots.txt', ['https://burakkyy.github.io/sitemap.xml'])
             wildcard = 'User-agent: *'.encode('utf-8')
             if wildcard not in body:
                 fail(failures, 'host robots.txt wildcard line is not the raw asterisk byte')
