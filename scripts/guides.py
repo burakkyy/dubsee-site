@@ -282,7 +282,7 @@ def _page(lang, pair, locales, base, store, email, icons, year, lang_list):
             {'@type': 'FAQPage', 'inLanguage': lang, 'mainEntity': [
                 {'@type': 'Question', 'name': item['q'], 'acceptedAnswer': {'@type': 'Answer', 'text': item['a']}} for item in faqs
             ]},
-            {'@type': 'SoftwareApplication', 'name': 'DUBSEE', 'operatingSystem': 'iOS', 'applicationCategory': 'MultimediaApplication', 'applicationSubCategory': 'Photo & Video', 'isAccessibleForFree': True, 'inLanguage': lang, 'downloadUrl': store, 'installUrl': store, 'url': canonical},
+            {'@type': 'SoftwareApplication', '@id': base + '/#app', 'name': 'DUBSEE', 'operatingSystem': 'iOS', 'applicationCategory': 'MultimediaApplication', 'applicationSubCategory': 'Photo & Video', 'isAccessibleForFree': True, 'inLanguage': lang, 'downloadUrl': store, 'installUrl': store, 'url': base + '/', 'sameAs': [store], 'publisher': {'@id': base + '/#organization'}},
         ],
     }
     body = _fill(BODIES[pair['key']][lang], lang, lang_list)

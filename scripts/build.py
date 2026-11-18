@@ -2,6 +2,7 @@
 """Generate crawlable multilingual HTML. Python 3 standard library only."""
 import json
 import shutil
+import xml.etree.ElementTree as ET
 from datetime import date
 from html import escape as esc
 from pathlib import Path
@@ -146,6 +147,14 @@ def render(code):
 </body></html>'''
 
 def build():
+    previous_pages = {path.relative_to(ROOT).as_posix(): path.read_bytes() for path in ROOT.rglob('*.html')}
+    previous_dates = {}
+    if (ROOT / 'sitemap.xml').exists():
+        for entry in ET.parse(ROOT / 'sitemap.xml').getroot():
+            location = entry.find('{*}loc')
+            modified = entry.find('{*}lastmod')
+            if location is not None and modified is not None:
+                previous_dates[location.text] = modified.text
     for code in LOCALES:
         dest = ROOT if code == 'en' else ROOT/code
         dest.mkdir(exist_ok=True)
@@ -166,10 +175,14 @@ def build():
         locs.append(en_url)
         locs.append(tr_url)
     def url_block(loc):
+        relative = loc.removeprefix(BASE + '/')
+        filename = relative + 'index.html' if not relative or relative.endswith('/') else relative
+        unchanged = previous_pages.get(filename) == (ROOT / filename).read_bytes()
+        modified = previous_dates.get(loc, updated) if unchanged else updated
         return (
             '  <url>\n'
             f'    <loc>{xml(loc)}</loc>\n'
-            f'    <lastmod>{updated}</lastmod>\n'
+            f'    <lastmod>{modified}</lastmod>\n'
             '  </url>'
         )
     sitemap = (
