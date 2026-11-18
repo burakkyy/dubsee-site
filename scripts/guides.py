@@ -278,7 +278,7 @@ def _page(lang, pair, locales, base, store, email, icons, year, lang_list):
                 {'@type': 'ListItem', 'position': 1, 'name': crumbs_home, 'item': base + ('/' if lang == 'en' else '/tr/')},
                 {'@type': 'ListItem', 'position': 2, 'name': meta['h1'], 'item': canonical},
             ]},
-            {'@type': 'WebPage', '@id': canonical + '#webpage', 'url': canonical, 'name': title, 'description': description, 'inLanguage': lang, 'isPartOf': {'@id': base + '/#website'}},
+            {'@type': 'WebPage', '@id': canonical + '#webpage', 'url': canonical, 'name': title, 'description': description, 'inLanguage': lang, 'isPartOf': {'@id': 'https://burakkyy.github.io/#website'}},
             {'@type': 'FAQPage', 'inLanguage': lang, 'mainEntity': [
                 {'@type': 'Question', 'name': item['q'], 'acceptedAnswer': {'@type': 'Answer', 'text': item['a']}} for item in faqs
             ]},
