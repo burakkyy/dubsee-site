@@ -67,7 +67,7 @@ def render(code):
         t = t | {'cta':'App Store', 'badge':t['badge'].split('·')[0].strip()}
     prefix = '' if code == 'en' else '../'
     def s(k): return esc(t[k])
-    def brand(): return f'<a class="brand" href="#main" aria-label="DUBSEE"><img src="{prefix}assets/app-icon.png" width="37" height="37" alt=""><span class="brand-copy"><strong>DUBSEE</strong><small>{esc(TAGLINES[code])}</small></span></a>'
+    def brand(href="#main"): return f'<a class="brand" href="{href}" aria-label="DUBSEE"><img src="{prefix}assets/app-icon.png" width="37" height="37" alt=""><span class="brand-copy"><strong>DUBSEE</strong><small>{esc(TAGLINES[code])}</small></span></a>'
     def cta():
         if STORE:
             return f'<a class="store-button" href="{esc(STORE)}" rel="external">{icon("apple")}<span>{s("cta")}</span></a>'
@@ -141,7 +141,7 @@ def render(code):
 <section class="section faq-section" id="faq"><div class="wrap faq-layout"><div class="faq-intro"><p class="eyebrow">DUBSEE / 05</p><h2 class="section-heading">{s('faq')}<span class="blue">.</span></h2><a class="text-link" href="mailto:{esc(CONFIG['support_email'])}">{s('support')}{icon('arrow')}</a></div><div class="faq-list">{faq}<details class="faq-item"><summary>{s('how')}</summary><p>{s('step1body')} {s('step2body')} {s('step3body')}</p></details></div></div></section>
 <section class="closing wrap" id="download"><img src="{prefix}assets/app-icon.png" alt="DUBSEE" width="63" height="63"><h2 class="section-heading">{s('finish')}</h2>{cta()}</section>
 </main>
-<footer class="site-footer"><div class="wrap"><div class="footer-top">{brand()}<nav class="footer-links" aria-label="{s('support')}">{legal}</nav></div><div class="footer-bottom"><p>{s('disclaimer')}</p><span class="copyright">© {date.today().year} DUBSEE</span></div></div></footer>
+<footer class="site-footer"><div class="wrap"><div class="footer-top">{brand("https://burakkyy.github.io/")}<nav class="footer-links" aria-label="{s('support')}">{legal}</nav></div><div class="footer-bottom"><p>{s('disclaimer')}</p><span class="copyright">© {date.today().year} DUBSEE</span></div></div></footer>
 <aside class="mobile-store" aria-label="DUBSEE">{brand()}{cta()}</aside>
 </body></html>'''
 
